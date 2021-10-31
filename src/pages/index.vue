@@ -17,7 +17,7 @@ const go = () => {
       <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">Vitesse Lite</a>
     </p>
     <p>
-      <em class="text-sm opacity-75">Opinionated Vite Starter Template</em>
+      <em class="text-sm">Opinionated Vite Starter Template</em>
     </p>
 
     <div class="py-4" />

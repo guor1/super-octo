@@ -44,7 +44,7 @@
 
 ### GitHub Template
 
-[Create a repo from this template on GitHub](https://github.com/antfu/vitesse-lite/generate).
+[Create a repo from this template on GitHub](https://github.com/guor1/vitesse-admin/generate).
 
 ### Clone to local
 

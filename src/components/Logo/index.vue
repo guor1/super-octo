@@ -5,13 +5,8 @@
   </div>
 </template>
 
-<script lang="ts">
-export default defineComponent({
-  name: 'Logo',
-  props: {
-    collapsed: {
-      type: Boolean,
-    },
-  },
-})
+<script setup lang="ts">
+defineProps<{
+  collapsed: Boolean
+}>()
 </script>

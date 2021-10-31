@@ -18,5 +18,8 @@ import { isDark, toggleDark } from '~/logic'
     >
       <carbon-logo-github />
     </a>
+    <a class="icon-btn mx-2 cursor-pointer" @click="$router.push('/dashboard')">
+      <ic-baseline-dashboard />
+    </a>
   </nav>
 </template>

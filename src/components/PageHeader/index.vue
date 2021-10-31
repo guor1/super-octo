@@ -26,57 +26,44 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { useDialog } from 'naive-ui'
+defineProps<{
+  collapsed?: Boolean
+}>()
 
-export default defineComponent({
-  name: 'PageHeader',
-  props: {
-    collapsed: {
-      type: Boolean,
-    },
+const dialog = useDialog()
+// 退出登录
+const doLogout = () => {
+  dialog.info({
+    title: '提示',
+    content: '您确定要退出登录吗',
+    positiveText: '确定',
+    negativeText: '取消',
+    onPositiveClick: () => { },
+    onNegativeClick: () => { },
+  })
+}
+
+const avatarOptions = [
+  {
+    label: '个人设置',
+    key: 1,
   },
-  setup (props) {
-    const dialog = useDialog()
-    // 退出登录
-    const doLogout = () => {
-      dialog.info({
-        title: '提示',
-        content: '您确定要退出登录吗',
-        positiveText: '确定',
-        negativeText: '取消',
-        onPositiveClick: () => { },
-        onNegativeClick: () => { },
-      })
-    }
-
-    const avatarOptions = [
-      {
-        label: '个人设置',
-        key: 1,
-      },
-      {
-        label: '退出登录',
-        key: 2,
-      },
-    ]
-
-    // 头像下拉菜单
-    const avatarSelect = (key: number) => {
-      switch (key) {
-        case 1:
-          break
-        case 2:
-          doLogout()
-          break
-      }
-    }
-
-    return {
-      avatarOptions,
-      avatarSelect,
-      doLogout,
-    }
+  {
+    label: '退出登录',
+    key: 2,
   },
-})
+]
+
+// 头像下拉菜单
+const avatarSelect = (key: number) => {
+  switch (key) {
+    case 1:
+      break
+    case 2:
+      doLogout()
+      break
+  }
+}
 </script>

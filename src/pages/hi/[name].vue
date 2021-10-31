@@ -9,12 +9,12 @@ const router = useRouter()
       <carbon-pedestrian class="inline-block" />
     </p>
     <p>Hi, {{ props.name }}</p>
-    <p class="text-sm opacity-50">
+    <p class="text-sm">
       <em>Dynamic route!</em>
     </p>
 
     <div>
-      <button class="btn m-3 text-sm mt-8" @click="router.back()">Back</button>
+      <n-button class="m-3 text-sm mt-8" type="primary" @click="router.back()">Back</n-button>
     </div>
   </div>
 </template>
