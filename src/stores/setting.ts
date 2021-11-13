@@ -1,28 +1,15 @@
 import { defineStore } from 'pinia'
 
-interface SettingState {
-  collapsed: boolean // 菜单是否折叠
-  navMode: string // 导航模式
-  showFooter: boolean // 页脚
-  isPageAnimate: boolean // 是否开启路由动画
-  pageAnimateType: string // 路由动画类型
-}
+export const useSettingStore = defineStore('setting', () => {
+  const collapsed = ref(false) // 菜单是否折叠
+  const navMode = ref('vertical') // 导航模式
+  const showFooter = ref(true) // 页脚
+  const isPageAnimate = ref(true) // 是否开启路由动画
+  const pageAnimateType = ref('zoom-fade') // 路由动画类型
 
-export const useSettingStore = defineStore({
-  id: 'setting',
-  state: (): SettingState => ({
-    collapsed: false,
-    navMode: 'vertical',
-    showFooter: true,
-    isPageAnimate: true,
-    pageAnimateType: 'zoom-fade',
-  }),
-  getters: {
-    isCollapsed (): boolean {
-      return this.collapsed
-    },
-    getNavMode (): string {
-      return this.navMode
-    },
-  },
+  function toggleCollapsed () {
+    collapsed.value = !collapsed.value
+  }
+
+  return { collapsed, navMode, showFooter, isPageAnimate, pageAnimateType, toggleCollapsed }
 })

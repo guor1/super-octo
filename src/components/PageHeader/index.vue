@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-between h-64px">
-    <div class="n-icon-head" @click="() => $emit('update:collapsed', !collapsed)">
+    <div class="n-icon-head" @click="settingStore.toggleCollapsed()">
       <n-icon size="30">
         <ic-baseline-menu />
       </n-icon>
@@ -28,9 +28,8 @@
 
 <script setup lang="ts">
 import { useDialog } from 'naive-ui'
-defineProps<{
-  collapsed?: Boolean
-}>()
+import { useSettingStore } from '~/stores/setting'
+const settingStore = useSettingStore()
 
 const dialog = useDialog()
 // 退出登录
