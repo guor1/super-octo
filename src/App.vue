@@ -16,6 +16,6 @@ useHead({
   </el-config-provider>
 </template>
 <style lang="scss">
-@import '~/style/style.scss';
-@import '~/style/theme/dark.scss';
+@import '~/styles/style.scss';
+@import '~/styles/theme/dark.scss';
 </style>

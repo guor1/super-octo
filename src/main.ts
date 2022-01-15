@@ -9,7 +9,6 @@ import App from './App.vue'
 // windicss layers
 import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
-import './styles/main.css'
 import 'virtual:windi-utilities.css'
 import 'makeit-captcha/dist/captcha.min.css'
 
