@@ -5,8 +5,8 @@ import { isDark, toggleDark } from '~/logic'
 <template>
   <nav class="text-xl">
     <button class="icon-btn mx-2 !outline-none" @click="toggleDark()">
-      <carbon-moon v-if="isDark" />
-      <carbon-sun v-else />
+      <icon-carbon-moon v-if="isDark" />
+      <icon-carbon-sun v-else />
     </button>
 
     <a
@@ -16,10 +16,10 @@ import { isDark, toggleDark } from '~/logic'
       target="_blank"
       title="GitHub"
     >
-      <carbon-logo-github />
+      <icon-carbon-logo-github />
     </a>
     <a class="icon-btn mx-2 cursor-pointer" @click="$router.push('/dashboard')">
-      <ic-baseline-dashboard />
+      <icon-carbon-home />
     </a>
   </nav>
 </template>

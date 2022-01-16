@@ -43,7 +43,8 @@ export default defineConfig({
         // auto import icons
         // https://github.com/antfu/vite-plugin-icons
         IconsResolver({
-          componentPrefix: 'carbon',
+          prefix: 'icon',
+          enabledCollections: 'carbon',
         }),
         ElementPlusResolver(),
         NaiveUiResolver(),

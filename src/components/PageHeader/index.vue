@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between h-64px">
     <div class="n-icon-head" @click="settingStore.toggleCollapsed()">
       <n-icon size="30">
-        <ic-baseline-menu />
+        <icon-carbon-data-1 />
       </n-icon>
     </div>
     <div class="flex items-center pr-3 h-full flex-center">
@@ -27,21 +27,23 @@
 </template>
 
 <script setup lang="ts">
-import { useDialog } from 'naive-ui'
+import { ElMessageBox } from 'element-plus'
+// import { useDialog } from 'naive-ui'
 import { useSettingStore } from '~/stores/setting'
 const settingStore = useSettingStore()
 
-const dialog = useDialog()
+// const dialog = useDialog()
 // 退出登录
 const doLogout = () => {
-  dialog.info({
-    title: '提示',
-    content: '您确定要退出登录吗',
-    positiveText: '确定',
-    negativeText: '取消',
-    onPositiveClick: () => { },
-    onNegativeClick: () => { },
-  })
+  ElMessageBox.alert('aaa')
+  // ElMessageBox.alert({
+  //   title: '提示',
+  //   content: '您确定要退出登录吗',
+  //   positiveText: '确定',
+  //   negativeText: '取消',
+  //   onPositiveClick: () => { },
+  //   onNegativeClick: () => { },
+  // })
 }
 
 const avatarOptions = [

@@ -6,7 +6,7 @@ const router = useRouter()
 <template>
   <div>
     <p class="text-4xl">
-      <carbon-pedestrian class="inline-block" />
+      <icon-carbon-pedestrian class="inline-block" />
     </p>
     <p>Hi, {{ props.name }}</p>
     <p class="text-sm">
@@ -14,7 +14,7 @@ const router = useRouter()
     </p>
 
     <div>
-      <n-button class="m-3 text-sm mt-8" type="primary" @click="router.back()">Back</n-button>
+      <el-button class="m-3 text-sm mt-8" type="primary" @click="router.back()">Back</el-button>
     </div>
   </div>
 </template>
