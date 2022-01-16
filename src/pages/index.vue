@@ -32,5 +32,5 @@ const go = () => {
 </template>
 <route lang="yaml">
 meta:
-  layout: home
+  layout: index
 </route>
