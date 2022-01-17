@@ -1,5 +1,5 @@
 import { createPinia } from 'pinia'
-import { UserModule } from '~/types'
+import type { UserModule } from '~/types'
 
 // 挂载状态管理
 // https://pinia.esm.dev/
