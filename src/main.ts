@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
 import type { AppContext } from './types'
+import i18n from './locales'
 import App from './App.vue'
 
 // windicss layers
@@ -31,6 +32,7 @@ import 'makeit-captcha/dist/captcha.min.css'
   Object.values(import.meta.globEager('./plugins/*.ts')).map(i => i.install?.(context))
 
   app.use(router)
+  app.use(i18n)
 
   await router.isReady()
   app.mount('#app', true)
