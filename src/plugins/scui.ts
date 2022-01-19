@@ -1,3 +1,4 @@
+import errorHandler from '~/utils/errorHandler'
 import auth from '~/directives/auth'
 import role from '~/directives/role'
 import time from '~/directives/time'
@@ -22,4 +23,7 @@ export const install: UserModule = ({ app }) => {
   app.directive('role', role)
   app.directive('time', time)
   app.directive('copy', copy)
+
+  // 全局代码错误捕捉
+  app.config.errorHandler = errorHandler
 }
