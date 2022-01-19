@@ -1,9 +1,8 @@
 <template>
-  <el-empty :image-size="200" :description="title" />
+  <el-empty description="Page Not Found" />
 </template>
 
 <script setup>
-const title = ref('Page Not Found')
 </script>
 
 <style>
