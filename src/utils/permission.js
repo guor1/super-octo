@@ -1,4 +1,4 @@
-import tool from '@/utils/tool'
+import tool from '~/utils/tool'
 
 export function permission (data) {
   const permissions = tool.data.get('PERMISSIONS')

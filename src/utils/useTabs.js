@@ -1,8 +1,8 @@
 import { nextTick } from 'vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import router from '@/router'
-import store from '@/store'
+import router from '  ~/router'
+import store from '  ~/store'
 
 export default {
   // 刷新标签

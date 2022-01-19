@@ -55,7 +55,7 @@ Print.prototype = {
       if (inputs[k].type === 'checkbox' || inputs[k].type === 'radio') {
         if (inputs[k].checked === true)
           inputs[k].setAttribute('checked', 'checked')
-				 else
+        else
           inputs[k].removeAttribute('checked')
       }
       else if (inputs[k].type === 'text') {
@@ -78,7 +78,7 @@ Print.prototype = {
           if (child[i].tagName === 'OPTION') {
             if (child[i].selected === true)
               child[i].setAttribute('selected', 'selected')
-						 else
+            else
               child[i].removeAttribute('selected')
           }
         }

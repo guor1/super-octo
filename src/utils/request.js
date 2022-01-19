@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { ElMessageBox, ElNotification } from 'element-plus'
-import sysConfig from '@/config'
-import tool from '@/utils/tool'
-import router from '@/router'
+import sysConfig from '~/config'
+import tool from '~/utils/tool'
+import routes from '~pages'
 
 axios.defaults.baseURL = ''
 
@@ -53,7 +53,7 @@ axios.interceptors.response.use(
           center: true,
           confirmButtonText: '重新登录',
         }).then(() => {
-          router.replace({ path: '/login' })
+          routes.router.replace({ path: '/login' })
         }).catch(() => {})
       }
       else {
@@ -77,10 +77,10 @@ axios.interceptors.response.use(
 const http = {
 
   /** get 请求
-	 * @param  {接口地址} url
-	 * @param  {请求参数} params
-	 * @param  {参数} config
-	 */
+   * @param  {接口地址} url
+   * @param  {请求参数} params
+   * @param  {参数} config
+   */
   get (url, params = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
@@ -97,10 +97,10 @@ const http = {
   },
 
   /** post 请求
-	 * @param  {接口地址} url
-	 * @param  {请求参数} data
-	 * @param  {参数} config
-	 */
+   * @param  {接口地址} url
+   * @param  {请求参数} data
+   * @param  {参数} config
+   */
   post (url, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
@@ -117,10 +117,10 @@ const http = {
   },
 
   /** put 请求
-	 * @param  {接口地址} url
-	 * @param  {请求参数} data
-	 * @param  {参数} config
-	 */
+   * @param  {接口地址} url
+   * @param  {请求参数} data
+   * @param  {参数} config
+   */
   put (url, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
@@ -137,10 +137,10 @@ const http = {
   },
 
   /** patch 请求
-	 * @param  {接口地址} url
-	 * @param  {请求参数} data
-	 * @param  {参数} config
-	 */
+   * @param  {接口地址} url
+   * @param  {请求参数} data
+   * @param  {参数} config
+   */
   patch (url, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
@@ -157,10 +157,10 @@ const http = {
   },
 
   /** delete 请求
-	 * @param  {接口地址} url
-	 * @param  {请求参数} data
-	 * @param  {参数} config
-	 */
+   * @param  {接口地址} url
+   * @param  {请求参数} data
+   * @param  {参数} config
+   */
   delete (url, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
@@ -177,9 +177,9 @@ const http = {
   },
 
   /** jsonp 请求
-	 * @param  {接口地址} url
-	 * @param  {JSONP回调函数名称} name
-	 */
+   * @param  {接口地址} url
+   * @param  {JSONP回调函数名称} name
+   */
   jsonp (url, name = 'jsonp') {
     return new Promise((resolve) => {
       const script = document.createElement('script')
