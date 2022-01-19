@@ -9,9 +9,9 @@
 
 <template>
   <span class="sc-trend" :class="'sc-trend--'+type">
-    <el-icon v-if="iconType=='P'" class="sc-trend-icon"><el-icon-top /></el-icon>
-    <el-icon v-if="iconType=='N'" class="sc-trend-icon"><el-icon-bottom /></el-icon>
-    <el-icon v-if="iconType=='Z'" class="sc-trend-icon"><el-icon-right /></el-icon>
+    <el-icon v-if="iconType=='P'" class="sc-trend-icon"><icon-ep-top /></el-icon>
+    <el-icon v-if="iconType=='N'" class="sc-trend-icon"><icon-ep-bottom /></el-icon>
+    <el-icon v-if="iconType=='Z'" class="sc-trend-icon"><icon-ep-right /></el-icon>
     <em class="sc-trend-prefix">{{ prefix }}</em>
     <em class="sc-trend-value">{{ modelValue }}</em>
     <em class="sc-trend-suffix">{{ suffix }}</em>
