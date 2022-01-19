@@ -67,6 +67,14 @@ export default defineConfig({
   ],
 
   server: {
+    open: false, // 运行后自动打开浏览器
+    proxy: {
+      '/api': {
+        target: 'https://www.fastmock.site/mock/5039c4361c39a7e3252c5b55971f1bd3/api',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, ''),
+      },
+    },
     fs: {
       strict: true,
     },

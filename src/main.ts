@@ -1,9 +1,12 @@
 // register vue composition api globally
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/display.css'
+
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
-import ElementPlus from 'element-plus'
 import type { AppContext } from './types'
 import i18n from './locales'
 import App from './App.vue'
@@ -13,9 +16,6 @@ import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
 import 'virtual:windi-utilities.css'
 import 'makeit-captcha/dist/captcha.min.css'
-// element-plus
-import 'element-plus/dist/index.css'
-import 'element-plus/theme-chalk/display.css'
 
 (async () => {
   // 创建应用

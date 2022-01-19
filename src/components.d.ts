@@ -12,7 +12,6 @@ declare module 'vue' {
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     IconCarbonCampsite: typeof import('~icons/carbon/campsite')['default']
     IconCarbonClose: typeof import('~icons/carbon/close')['default']
-    IconEpDCaret: typeof import('~icons/ep/d-caret')['default']
     Logo: typeof import('./components/Logo/index.vue')['default']
     MainView: typeof import('./components/MainView/index.vue')['default']
     Multiple: typeof import('./components/scUpload/multiple.vue')['default']
