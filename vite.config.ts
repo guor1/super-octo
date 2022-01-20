@@ -44,7 +44,7 @@ export default defineConfig({
         // https://github.com/antfu/vite-plugin-icons
         IconsResolver({
           prefix: 'icon',
-          enabledCollections: ['carbon', 'ep'],
+          enabledCollections: ['carbon', 'ep', 'logos'],
         }),
         NaiveUiResolver(),
       ],

@@ -8,16 +8,19 @@
               <el-avatar :size="80" src="img/avatar.jpg" />
               <h2>{{ form.name||'-' }}</h2>
               <p>{{ form.about||'无签名' }}</p>
-              <el-button type="primary" round icon="el-icon-collection-tag" size="medium">Administrator</el-button>
+              <el-button type="primary" round size="medium">
+                <ep-icon icon="ep:collection-tag" />
+                Administrator
+              </el-button>
             </div>
             <div class="user-info-main">
               <ul>
-                <li><label><el-icon><el-icon-user /></el-icon></label><span>81883387@qq.com</span></li>
-                <li><label><el-icon><el-icon-present /></el-icon></label><span>1988-05-07</span></li>
-                <li><label><el-icon><el-icon-male /></el-icon></label><span>男</span></li>
-                <li><label><el-icon><el-icon-location /></el-icon></label><span>中国/上海/金山</span></li>
-                <li><label><el-icon><el-icon-office-building /></el-icon></label><span>集团/上海分公司/软件研发部/摸鱼组</span></li>
-                <li><label><el-icon><el-icon-coin /></el-icon></label><span>超级管理员</span></li>
+                <li><label><ep-icon icon="ep:user" /></label><span>81883387@qq.com</span></li>
+                <li><label><ep-icon icon="ep:present" /></label><span>1988-05-07</span></li>
+                <li><label><ep-icon icon="ep:male" /></label><span>男</span></li>
+                <li><label><ep-icon icon="ep:location" /></label><span>中国/上海/金山</span></li>
+                <li><label><ep-icon icon="ep:office-building" /></label><span>集团/上海分公司/软件研发部/摸鱼组</span></li>
+                <li><label><ep-icon icon="ep:coin" /></label><span>超级管理员</span></li>
               </ul>
             </div>
             <div class="user-info-bottom">

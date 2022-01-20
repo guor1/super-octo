@@ -5,17 +5,6 @@
         <h2>SCUI</h2>
         <h4>{{ $t('login.slogan') }}</h4>
         <p>{{ $t('login.describe') }}</p>
-        <div>
-          <span>
-            <el-icon><sc-icon-vue /></el-icon>
-          </span>
-          <span>
-            <el-icon class="add"><icon-ep-plus /></el-icon>
-          </span>
-          <span>
-            <el-icon><icon-ep-eleme-filled /></el-icon>
-          </span>
-        </div>
       </div>
       <div class="login_adv__bottom">
         © {{ $CONFIG.APP_NAME }} {{ $CONFIG.APP_VER }}
@@ -23,10 +12,12 @@
     </div>
     <div class="login_main">
       <div class="login_config">
-        <el-button :icon="config.theme=='dark'?'el-icon-sunny':'el-icon-moon'" circle type="info" @click="configTheme" />
+        <el-button circle type="info" @click="configTheme">
+          <ep-icon :icon="config.theme=='dark'?'ep:sunny':'ep:moon'" />
+        </el-button>
         <el-dropdown trigger="click" placement="bottom-end" @command="configLang">
           <el-button circle>
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path d="M478.33 433.6l-90-218a22 22 0 0 0-40.67 0l-90 218a22 22 0 1 0 40.67 16.79L316.66 406h102.67l18.33 44.39A22 22 0 0 0 458 464a22 22 0 0 0 20.32-30.4zM334.83 362L368 281.65L401.17 362z" fill="currentColor" /><path d="M267.84 342.92a22 22 0 0 0-4.89-30.7c-.2-.15-15-11.13-36.49-34.73c39.65-53.68 62.11-114.75 71.27-143.49H330a22 22 0 0 0 0-44H214V70a22 22 0 0 0-44 0v20H54a22 22 0 0 0 0 44h197.25c-9.52 26.95-27.05 69.5-53.79 108.36c-31.41-41.68-43.08-68.65-43.17-68.87a22 22 0 0 0-40.58 17c.58 1.38 14.55 34.23 52.86 83.93c.92 1.19 1.83 2.35 2.74 3.51c-39.24 44.35-77.74 71.86-93.85 80.74a22 22 0 1 0 21.07 38.63c2.16-1.18 48.6-26.89 101.63-85.59c22.52 24.08 38 35.44 38.93 36.1a22 22 0 0 0 30.75-4.9z" fill="currentColor" /></svg>
+            <ep-icon icon="carbon:language" />
           </el-button>
           <template #dropdown>
             <el-dropdown-menu>
@@ -45,7 +36,10 @@
         </div>
         <el-form ref="loginForm" :model="ruleForm" :rules="rules" label-width="0" size="large">
           <el-form-item prop="user">
-            <el-input v-model="ruleForm.user" prefix-icon="el-icon-user" clearable :placeholder="$t('login.userPlaceholder')">
+            <el-input v-model="ruleForm.user" clearable :placeholder="$t('login.userPlaceholder')">
+              <template #prefix>
+                <ep-icon icon="ep-user" class="el-input__icon" />
+              </template>
               <template #append>
                 <el-select v-model="userType" style="width: 130px;">
                   <el-option :label="$t('login.admin')" value="admin" />
@@ -55,7 +49,11 @@
             </el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input v-model="ruleForm.password" prefix-icon="el-icon-lock" clearable show-password :placeholder="$t('login.PWPlaceholder')" />
+            <el-input v-model="ruleForm.password" clearable show-password :placeholder="$t('login.PWPlaceholder')">
+              <template #prefix>
+                <ep-icon icon="ep-lock" class="el-input__icon" />
+              </template>
+            </el-input>
           </el-form-item>
           <el-form-item style="margin-bottom: 10px;">
             <el-row>
@@ -75,7 +73,9 @@
         <el-divider>{{ $t('login.signInOther') }}</el-divider>
 
         <div class="login-oauth">
-          <el-button size="small" type="success" icon="sc-icon-wechat" circle />
+          <el-button size="small" type="success" circle>
+            <ep-icon icon="carbon:logo-wechat" />
+          </el-button>
         </div>
       </div>
     </div>
@@ -142,15 +142,14 @@ export default {
     },
   },
   created () {
-    // this.$TOOL.data.remove('TOKEN')
-    // this.$TOOL.data.remove('USER_INFO')
-    // this.$TOOL.data.remove('MENU')
-    // this.$TOOL.data.remove('PERMISSIONS')
-    // this.$TOOL.data.remove('grid')
+    this.$TOOL.data.remove('TOKEN')
+    this.$TOOL.data.remove('USER_INFO')
+    this.$TOOL.data.remove('MENU')
+    this.$TOOL.data.remove('PERMISSIONS')
+    this.$TOOL.data.remove('grid')
     // this.$store.commit('clearViewTags')
     // this.$store.commit('clearKeepLive')
     // this.$store.commit('clearIframeList')
-    // console.log('%c SCUI %c Gitee: https://gitee.com/lolicode/scui', 'background:#666;color:#fff;border-radius:3px;', '')
   },
   methods: {
     async login () {
@@ -164,7 +163,7 @@ export default {
       }
       // 获取token
       const user = await this.$API.auth.token.post(data)
-      if (user.code == 200) {
+      if (user.code === 200) {
         this.$TOOL.data.set('TOKEN', user.data.token)
         this.$TOOL.data.set('USER_INFO', user.data.userInfo)
       }
@@ -175,14 +174,14 @@ export default {
       }
       // 获取菜单
       let menu = null
-      if (this.ruleForm.user == 'admin')
+      if (this.ruleForm.user === 'admin')
         menu = await this.$API.system.menu.myMenus.get()
 
       else
         menu = await this.$API.demo.menu.get()
 
-      if (menu.code == 200) {
-        if (menu.data.menu.length == 0) {
+      if (menu.code === 200) {
+        if (menu.data.menu.length === 0) {
           this.islogin = false
           this.$alert('当前用户无任何菜单权限，请联系系统管理员', '无权限访问', {
             type: 'error',
@@ -199,14 +198,12 @@ export default {
         return false
       }
 
-      this.$router.replace({
-        path: '/',
-      })
-      this.$message.success('Login Success 登录成功')
+      this.$router.replace({ path: '/usercenter' })
+      this.$message.success('登录成功')
       this.islogin = false
     },
     configTheme () {
-      this.config.theme = this.config.theme == 'default' ? 'dark' : 'default'
+      this.config.theme = this.config.theme === 'default' ? 'dark' : 'default'
     },
     configLang (command) {
       this.config.lang = command.value
@@ -243,11 +240,11 @@ meta:
 .login_config {position: absolute;top:20px;right: 20px;}
 .el-dropdown-menu__item.selected {color: var(--el-color-primary);}
 @media (max-width: 1200px){
-.login-form {width: 340px;}
+  .login-form {width: 340px;}
 }
 @media (max-width: 1000px){
-.login_main {display: block;}
-.login-form {width:100%;padding:20px 40px;}
-.login_adv {display: none;}
+  .login_main {display: block;}
+  .login-form {width:100%;padding:20px 40px;}
+  .login_adv {display: none;}
 }
 </style>
