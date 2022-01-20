@@ -73,21 +73,16 @@ export const userRoutes: Array<MenuItem> = [
         component: 'vab/iconselect',
       }],
     }, {
-      path: '/vab/feedback',
-      name: 'vabfeedback',
-      meta: { title: 'Feedback 反馈', icon: 'ep-mouse', type: 'menu' },
-      children: [{
-        path: '/vab/contextmenu',
-        name: 'contextmenu',
-        meta: { title: '右键菜单', type: 'menu' },
-        component: 'vab/contextmenu',
-      },
-      {
-        path: '/vab/cropper',
-        name: 'cropper',
-        meta: { title: '图像剪裁', type: 'menu' },
-        component: 'vab/cropper',
-      }],
+      path: '/vab/contextmenu',
+      name: 'contextmenu',
+      meta: { title: '右键菜单', icon: 'ep:eleme', type: 'menu' },
+      component: 'vab/contextmenu',
+    },
+    {
+      path: '/vab/cropper',
+      name: 'cropper',
+      meta: { title: '图像剪裁', icon: 'ep:eleme', type: 'menu' },
+      component: 'vab/cropper',
     }, {
       path: '/vab/dialog',
       name: 'dialogExtend',

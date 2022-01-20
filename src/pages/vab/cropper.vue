@@ -57,7 +57,7 @@ export default {
   name: 'Cropper',
   data () {
     return {
-      cropperImg: 'img/avatar.jpg',
+      cropperImg: '/img/avatar.jpg',
       compress: 0.5,
       aspectRatio: 0,
       uploadImg: '',
@@ -88,4 +88,8 @@ export default {
 </script>
 
 <style>
+img {
+  width: auto;
+  height: auto;
+}
 </style>

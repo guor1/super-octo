@@ -3,18 +3,24 @@
     <el-table ref="table" :key="toggleIndex" :data="data" border stripe>
       <el-table-column type="index" width="50" fixed="left">
         <template #header>
-          <el-button type="primary" icon="el-icon-plus" size="mini" circle @click="rowAdd" />
+          <el-button type="primary" size="mini" circle @click="rowAdd">
+            <ep-icon icon="ep:plus" />
+          </el-button>
         </template>
         <template #default="scope">
           <div class="sc-form-table-handle">
             <span>{{ scope.$index + 1 }}</span>
-            <el-button type="danger" icon="el-icon-delete" size="mini" plain circle @click="rowDel(scope.row, scope.$index)" />
+            <el-button type="danger" size="mini" plain circle @click="rowDel(scope.row, scope.$index)">
+              <ep-icon icon="ep:delete" />
+            </el-button>
           </div>
         </template>
       </el-table-column>
       <el-table-column v-if="dragSort" label="" width="51">
         <template #default>
-          <el-tag class="move" style="cursor: move;"><el-icon-d-caret style="width: 1em; height: 1em;" /></el-tag>
+          <el-tag class="move" style="cursor: move;">
+            <ep-icon icon="ep:d-caret" />
+          </el-tag>
         </template>
       </el-table-column>
       <slot />
