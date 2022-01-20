@@ -2,16 +2,16 @@
   <div v-loading="loading" class="sc-upload" element-loading-background="rgba(0, 0, 0, 0.5)" :style="style">
     <div v-if="tempImg || img" class="sc-upload-file">
       <div class="mask">
-        <span class="del" @click.stop="del"><el-icon><el-icon-delete /></el-icon></span>
+        <span class="del" @click.stop="del"><el-icon><icon-ep-delete /></el-icon></span>
       </div>
       <el-image v-if="fileIsImg" class="image" :src="tempImg || img" :preview-src-list="[img]" fit="cover" hide-on-click-modal append-to-body :z-index="9999" />
-      <a v-else :href="img" class="file" target="_blank"><el-icon><el-icon-document /></el-icon></a>
+      <a v-else :href="img" class="file" target="_blank"><el-icon><icon-ep-document /></el-icon></a>
     </div>
     <div v-else class="sc-upload-uploader" @click="fileSelect && showfileSelect()">
       <el-upload ref="upload" class="uploader" :disabled="fileSelect" :auto-upload="!cropper" :on-change="change" :accept="accept" :action="action" :show-file-list="false" :before-upload="before" :on-success="success" :on-error="error" :http-request="request">
         <slot>
           <div class="file-empty">
-            <el-icon><component :is="icon" /></el-icon>
+            <el-icon><Icon :icon="icon" /></el-icon>
             <h4 v-if="title">{{ title }}</h4>
           </div>
         </slot>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { Icon } from '@iconify/vue'
 import { defineAsyncComponent } from 'vue'
 import config from '~/config/upload'
 const scCropper = defineAsyncComponent(() => import('~/components/scCropper.vue'))
@@ -45,6 +46,7 @@ export default {
   components: {
     scCropper,
     scFileSelect,
+    Icon,
   },
   props: {
     height: { type: Number, default: 120 },
@@ -55,7 +57,7 @@ export default {
     accept: { type: String, default: 'image/gif, image/jpeg, image/png' },
     maxSize: { type: Number, default: config.maxSize },
     title: { type: String, default: '' },
-    icon: { type: String, default: 'el-icon-plus' },
+    icon: { type: String, default: 'ep:plus' },
     fileSelect: { type: Boolean, default: false },
     cropper: { type: Boolean, default: false },
     compress: { type: Number, default: 1 },

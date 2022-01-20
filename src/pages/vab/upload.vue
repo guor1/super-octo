@@ -2,10 +2,10 @@
   <el-main>
     <el-card shadow="never" header="基础示例">
       <sc-upload v-model="imgurl" />
-      <sc-upload v-model="imgurl2" title="自定义标题" icon="el-icon-picture" />
+      <sc-upload v-model="imgurl2" title="自定义标题" icon="ep:picture" />
       <sc-upload v-model="imgurl3" :api-obj="uploadApi" accept=".xls,.xlsx" :on-success="success" :width="220">
         <div class="custom-empty">
-          <el-icon><el-icon-upload /></el-icon>
+          <el-icon><icon-ep-upload /></el-icon>
           <p>自定义插槽</p>
         </div>
       </sc-upload>
