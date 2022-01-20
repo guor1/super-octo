@@ -11,7 +11,7 @@
   <hr v-if="divided">
   <li :class="disabled?'disabled':''" @click.stop="liClick" @mouseenter="openSubmenu($event)" @mouseleave="closeSubmenu($event)">
     <span class="title">
-      <el-icon class="sc-contextmenu__icon"><Icon :icon="icon" /></el-icon>
+      <ep-icon class="sc-contextmenu__icon" :icon="icon" />
       {{ title }}
     </span>
     <span class="sc-contextmenu__suffix">

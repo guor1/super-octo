@@ -32,16 +32,16 @@
         <el-pagination v-if="!hidePagination" v-model:currentPage="currentPage" background :small="true" :layout="paginationLayout" :total="total" :page-size="pageSize" @current-change="paginationChange" />
       </div>
       <div v-if="!hideDo" class="scTable-do">
-        <el-button v-if="!hideRefresh" icon="el-icon-refresh" circle style="margin-left:15px" @click="refresh" />
+        <ep-button v-if="!hideRefresh" icon="ep:refresh" circle style="margin-left:15px" @click="refresh" />
         <el-popover v-if="column" placement="top" title="列设置" :width="500" trigger="click" :hide-after="0" @show="customColumnShow=true" @after-leave="customColumnShow=false">
           <template #reference>
-            <el-button icon="el-icon-set-up" circle style="margin-left:15px" />
+            <ep-button icon="ep:set-up" circle style="margin-left:15px" />
           </template>
-          <columnSetting v-if="customColumnShow" ref="columnSetting" :column="userColumn" @userChange="columnSettingChange" @save="columnSettingSave" @back="columnSettingBack" />
+          <columnSetting v-if="customColumnShow" ref="columnSetting" :column="userColumn" @user-change="columnSettingChange" @save="columnSettingSave" @back="columnSettingBack" />
         </el-popover>
         <el-popover v-if="!hideSetting" placement="top" title="表格设置" :width="400" trigger="click" :hide-after="0">
           <template #reference>
-            <el-button icon="el-icon-setting" circle style="margin-left:15px" />
+            <ep-button icon="ep:setting" circle style="margin-left:15px" />
           </template>
           <el-form label-width="80px" label-position="left">
             <el-form-item label="表格尺寸">

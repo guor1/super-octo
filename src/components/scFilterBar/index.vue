@@ -11,7 +11,7 @@
   <div class="sc-filterBar">
     <slot :filterLength="filterObjLength" :openFilter="openFilter">
       <el-badge :value="filterObjLength" type="danger" :hidden="filterObjLength<=0">
-        <el-button size="small" icon="el-icon-filter" @click="openFilter" />
+        <ep-button size="small" icon="ep:filter" @click="openFilter" />
       </el-badge>
     </slot>
 
@@ -71,11 +71,13 @@
                         <el-select v-if="item.field.type=='tags'" v-model="item.value" multiple filterable allow-create default-first-option no-data-text="输入关键词后按回车确认" :placeholder="item.field.placeholder||'请输入'" />
                       </td>
                       <td>
-                        <el-icon class="del" @click="delFilter(index)"><el-icon-delete /></el-icon>
+                        <ep-icon icon="ep:delete" class="del" @click="delFilter(index)" />
                       </td>
                     </tr>
                   </table>
-                  <el-button type="text" icon="el-icon-plus" @click="addFilter">增加过滤项</el-button>
+                  <ep-button type="text" icon="ep:plus" @click="addFilter">
+                    增加过滤项
+                  </ep-button>
                 </div>
               </el-scrollbar>
             </el-tab-pane>
