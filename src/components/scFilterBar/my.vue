@@ -42,6 +42,7 @@ export default {
     filterName: { type: String, default: '' },
     data: { type: Object, default: () => {} },
   },
+  emits: ['selectMyfilter'],
   data () {
     return {
       loading: false,
@@ -68,13 +69,13 @@ export default {
     // 删除常用过滤
     async closeMyfilter (item, index) {
       try {
-        var del = await config.delMy(this.filterName)
+        const del = await config.delMy(this.filterName)
+        if (!del)
+          return false
       }
       catch (error) {
         return false
       }
-      if (!del)
-        return false
 
       this.myFilter.splice(index, 1)
       this.$message.success('删除常用成功')
@@ -95,19 +96,19 @@ export default {
 </script>
 
 <style scoped>
-	.sc-filter-my {}
-	.sc-filter-my-loading {padding:15px;}
-	.sc-filter-my-list {list-style-type: none;background: #fff;border-bottom: 1px solid #e6e6e6;}
-	.sc-filter-my-list h2 {font-size: 12px;color: #999;font-weight: normal;padding:20px;}
-	.sc-filter-my-list li {padding:12px 20px;cursor: pointer;position: relative;color: #3c4a54;padding-right:80px;}
-	.sc-filter-my-list li:hover {background: #ecf5ff;color: #409EFF;}
-	.sc-filter-my-list li label {cursor: pointer;font-size: 14px;line-height: 1.8;}
-	.sc-filter-my-list li label span {color: #999;margin-right: 10px;}
-	.sc-filter-my-list li .del {position: absolute;right:20px;top:8px;border-radius:50%;width: 32px;height: 32px;display: flex;align-items: center;justify-content: center;color: #999;}
-	.sc-filter-my-list li .del:hover {background: #F56C6C;color: #fff;}
+.sc-filter-my {}
+.sc-filter-my-loading {padding:15px;}
+.sc-filter-my-list {list-style-type: none;background: #fff;border-bottom: 1px solid #e6e6e6;}
+.sc-filter-my-list h2 {font-size: 12px;color: #999;font-weight: normal;padding:20px;}
+.sc-filter-my-list li {padding:12px 20px;cursor: pointer;position: relative;color: #3c4a54;padding-right:80px;}
+.sc-filter-my-list li:hover {background: #ecf5ff;color: #409EFF;}
+.sc-filter-my-list li label {cursor: pointer;font-size: 14px;line-height: 1.8;}
+.sc-filter-my-list li label span {color: #999;margin-right: 10px;}
+.sc-filter-my-list li .del {position: absolute;right:20px;top:8px;border-radius:50%;width: 32px;height: 32px;display: flex;align-items: center;justify-content: center;color: #999;}
+.sc-filter-my-list li .del:hover {background: #F56C6C;color: #fff;}
 
-	[data-theme='dark'] .sc-filter-my .el-empty h2 {color: #fff;}
-	[data-theme='dark'] .sc-filter-my-list {background: none;border-color:var(--el-border-color-base);}
-	[data-theme='dark'] .sc-filter-my-list li {color: #d0d0d0;}
-	[data-theme='dark'] .sc-filter-my-list li:hover {background: var(--el-color-white);}
+[data-theme='dark'] .sc-filter-my .el-empty h2 {color: #fff;}
+[data-theme='dark'] .sc-filter-my-list {background: none;border-color:var(--el-border-color-base);}
+[data-theme='dark'] .sc-filter-my-list li {color: #d0d0d0;}
+[data-theme='dark'] .sc-filter-my-list li:hover {background: var(--el-color-white);}
 </style>

@@ -84,7 +84,7 @@
                 <div class="tabs-label">常用</div>
               </template>
               <el-scrollbar>
-                <my ref="my" :data="myFilter" :filter-name="filterName" @selectMyfilter="selectMyfilter" />
+                <my ref="my" :data="myFilter" :filter-name="filterName" @select-my-filter="selectMyfilter" />
               </el-scrollbar>
             </el-tab-pane>
           </el-tabs>
@@ -100,9 +100,9 @@
 </template>
 
 <script>
-import pySelect from './pySelect'
-import my from './my'
-import config from '~/config/filterBar'
+import pySelect from './pySelect.vue'
+import my from './my.vue'
+import config from '~/config/filterBar.vue'
 
 export default {
   name: 'FilterBar',
@@ -115,6 +115,7 @@ export default {
     showOperator: { type: Boolean, default: true },
     options: { type: Object, default: () => {} },
   },
+  emits: ['filterChange'],
   data () {
     return {
       drawer: false,
@@ -184,12 +185,13 @@ export default {
       if (isopen && item.field.extend.request && !item.field.extend.remote) {
         item.selectLoading = true
         try {
-          var data = await item.field.extend.request()
+          const data = await item.field.extend.request()
+          item.field.extend.data = data
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.log(error)
         }
-        item.field.extend.data = data
         item.selectLoading = false
       }
     },
@@ -198,12 +200,13 @@ export default {
       if (query !== '') {
         item.selectLoading = true
         try {
-          var data = await item.field.extend.request(query)
+          const data = await item.field.extend.request(query)
+          item.field.extend.data = data
         }
         catch (error) {
+          // eslint-disable-next-line no-console
           console.log(error)
         }
-        item.field.extend.data = data
         item.selectLoading = false
       }
       else {
@@ -219,10 +222,10 @@ export default {
         if (filterValue) {
           const operator = filterValue.split('|')[1]
           let value = filterValue.split('|')[0]
-          if (field.type == 'select' && field.extend.multiple)
+          if (field.type === 'select' && field.extend.multiple)
             value = value.split(',')
 
-          else if (field.type == 'daterange')
+          else if (field.type === 'daterange')
             value = value.split(',')
 
           this.filter.push({
@@ -256,16 +259,14 @@ export default {
             filterObj: this.filterObj,
           }
           try {
-            var save = await config.saveMy(this.filterName, saveObj)
+            const save = await config.saveMy(this.filterName, saveObj)
+            if (!save)
+              return false
           }
           catch (error) {
             this.saveLoading = false
-            console.log(error)
             return false
           }
-          if (!save)
-            return false
-
           this.myFilter.push(saveObj)
           this.$message.success(`${this.filterName} 保存常用成功`)
           this.saveLoading = false
@@ -285,29 +286,29 @@ export default {
 </script>
 
 <style scoped>
-	.tabs-label {padding:0 20px;}
+.tabs-label {padding:0 20px;}
 
-	.nodata {height:46px;line-height: 46px;margin:15px 0;border: 1px dashed #e6e6e6;color: #999;text-align: center;border-radius: 3px;}
+.nodata {height:46px;line-height: 46px;margin:15px 0;border: 1px dashed #e6e6e6;color: #999;text-align: center;border-radius: 3px;}
 
-	.sc-filter-main {padding:20px;border-bottom: 1px solid #e6e6e6;background: #fff;}
-	.sc-filter-main h2 {font-size: 12px;color: #999;font-weight: normal;}
-	.sc-filter-main table {width: 100%;margin: 15px 0;}
-	.sc-filter-main table tr {}
-	.sc-filter-main table td {padding:5px 10px 5px 0;}
-	.sc-filter-main table td:deep(.el-input .el-input__inner)  {vertical-align: top;}
-	.sc-filter-main table td .el-select {display: block;}
-	.sc-filter-main table td .el-date-editor.el-input {display: block;width: 100%;}
-	.sc-filter-main table td .del {background: #fff;color: #999;width: 32px;height: 32px;line-height: 32px;text-align: center;border-radius:50%;font-size: 12px;cursor: pointer;}
-	.sc-filter-main table td .del:hover {background: #F56C6C;color: #fff;}
+.sc-filter-main {padding:20px;border-bottom: 1px solid #e6e6e6;background: #fff;}
+.sc-filter-main h2 {font-size: 12px;color: #999;font-weight: normal;}
+.sc-filter-main table {width: 100%;margin: 15px 0;}
+.sc-filter-main table tr {}
+.sc-filter-main table td {padding:5px 10px 5px 0;}
+.sc-filter-main table td:deep(.el-input .el-input__inner)  {vertical-align: top;}
+.sc-filter-main table td .el-select {display: block;}
+.sc-filter-main table td .el-date-editor.el-input {display: block;width: 100%;}
+.sc-filter-main table td .del {background: #fff;color: #999;width: 32px;height: 32px;line-height: 32px;text-align: center;border-radius:50%;font-size: 12px;cursor: pointer;}
+.sc-filter-main table td .del:hover {background: #F56C6C;color: #fff;}
 
-	.root {display: flex;height: 100%;flex-direction: column}
-	.root:deep(.el-tabs__header) {margin: 0;}
-	.root:deep(.el-tabs__content) {flex: 1;background: #f6f8f9;}
-	.root:deep(.el-tabs__content) .el-tab-pane{overflow: auto;height:100%;}
+.root {display: flex;height: 100%;flex-direction: column}
+.root:deep(.el-tabs__header) {margin: 0;}
+.root:deep(.el-tabs__content) {flex: 1;background: #f6f8f9;}
+.root:deep(.el-tabs__content) .el-tab-pane{overflow: auto;height:100%;}
 
-	[data-theme='dark'] .root:deep(.el-tabs__content) {background: none;}
-	[data-theme='dark'] .sc-filter-main {background: none;border-color:var(--el-border-color-base);}
-	[data-theme='dark'] .sc-filter-main table td .del {background: none;}
-	[data-theme='dark'] .sc-filter-main table td .del:hover {background: #F56C6C;}
-	[data-theme='dark'] .nodata {border-color:var(--el-border-color-base);}
+[data-theme='dark'] .root:deep(.el-tabs__content) {background: none;}
+[data-theme='dark'] .sc-filter-main {background: none;border-color:var(--el-border-color-base);}
+[data-theme='dark'] .sc-filter-main table td .del {background: none;}
+[data-theme='dark'] .sc-filter-main table td .del:hover {background: #F56C6C;}
+[data-theme='dark'] .nodata {border-color:var(--el-border-color-base);}
 </style>
