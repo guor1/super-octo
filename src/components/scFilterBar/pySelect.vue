@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import pinyin from './pinyin'
-
 export default {
   props: {
     options: { type: Array, default: () => [] },
@@ -35,7 +33,7 @@ export default {
       if (keyword) {
         this.optionsList = this.optionsList_
         this.optionsList = this.optionsList.filter(item =>
-          pinyin.match(item.label, keyword),
+          item.label.match(keyword),
         )
       }
       else {

@@ -131,7 +131,7 @@
       <div v-if="!isMobile" class="aminui-side-split">
         <div class="aminui-side-split-top">
           <router-link :to="$CONFIG.DASHBOARD_URL">
-            <img class="logo" :title="$CONFIG.APP_NAME" src="img/logo-r.png" style="width: auto;">
+            <img class="logo" :title="$CONFIG.APP_NAME" src="/img/logo-r.png" style="width: auto;">
           </router-link>
         </div>
         <div class="adminui-side-split-scroll">

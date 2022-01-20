@@ -1,6 +1,7 @@
 <template>
   <el-button>
     <ep-icon :icon="icon" />
+    <slot />
   </el-button>
 </template>
 <script setup lang="ts">

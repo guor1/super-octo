@@ -75,9 +75,7 @@
                       </td>
                     </tr>
                   </table>
-                  <ep-button type="text" icon="ep:plus" @click="addFilter">
-                    增加过滤项
-                  </ep-button>
+                  <ep-button type="text" icon="ep:plus" @click="addFilter">增加过滤项</ep-button>
                 </div>
               </el-scrollbar>
             </el-tab-pane>
@@ -104,7 +102,7 @@
 <script>
 import pySelect from './pySelect.vue'
 import my from './my.vue'
-import config from '~/config/filterBar.vue'
+import config from '~/config/filterBar'
 
 export default {
   name: 'FilterBar',
