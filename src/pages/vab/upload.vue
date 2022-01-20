@@ -47,7 +47,7 @@ export default {
   data () {
     return {
       uploadApi: this.$API.common.upload,
-      imgurl: 'img/avatar.jpg',
+      imgurl: '/img/avatar.jpg',
       imgurl2: '',
       imgurl3: '',
       imgurl4: '',

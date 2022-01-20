@@ -13,15 +13,15 @@
                   {{ node.label }}
                 </span>
                 <span class="do">
-                  <el-icon @click.stop="add(node, data)"><icon-ep-plus /></el-icon>
+                  <ep-icon icon="ep:plus" @click.stop="add(node, data)" />
                 </span>
               </span>
             </template>
           </el-tree>
         </el-main>
         <el-footer style="height:51px;">
-          <el-button type="primary" size="mini" icon="el-icon-plus" @click="add()" />
-          <el-button type="danger" size="mini" plain icon="el-icon-delete" @click="delMenu" />
+          <ep-button type="primary" size="mini" icon="ep:plus" @click="add()" />
+          <ep-button type="danger" size="mini" plain icon="ep:delete" @click="delMenu" />
         </el-footer>
       </el-container>
     </el-aside>

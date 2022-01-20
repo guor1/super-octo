@@ -5,7 +5,7 @@
         <el-card shadow="never">
           <div class="user-info">
             <div class="user-info-top">
-              <el-avatar :size="80" src="img/avatar.jpg" />
+              <el-avatar :size="80" src="/img/avatar.jpg" />
               <h2>{{ form.name||'-' }}</h2>
               <p>{{ form.about||'无签名' }}</p>
               <el-button type="primary" round size="medium">
@@ -44,7 +44,7 @@
               <el-timeline style="margin-top:20px;padding-left:10px;">
                 <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp" placement="top">
                   <div class="activity-item">
-                    <el-avatar class="avatar" :size="24" src="img/avatar.jpg" />
+                    <el-avatar class="avatar" :size="24" src="/img/avatar.jpg" />
                     <label>{{ activity.operate }}</label><el-tag v-if="activity.mod" size="mini">{{ activity.mod }}</el-tag>{{ activity.describe }}
                   </div>
                 </el-timeline-item>

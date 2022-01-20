@@ -77,12 +77,7 @@
 </template>
 
 <script>
-import scIconSelect from '~/components/scIconSelect'
-
 export default {
-  components: {
-    scIconSelect,
-  },
   props: {
     menu: { type: Object, default: () => {} },
   },

@@ -71,7 +71,7 @@ export default {
         {
           id: 1,
           type: 'user',
-          avatar: 'img/avatar.jpg',
+          avatar: '/img/avatar.jpg',
           title: 'Skuya',
           describe: '如果喜欢就点个星星支持一下哦',
           link: 'https://gitee.com/lolicode/scui',
@@ -80,7 +80,7 @@ export default {
         {
           id: 2,
           type: 'user',
-          avatar: 'img/avatar2.gif',
+          avatar: '/img/avatar2.gif',
           title: 'Lolowan',
           describe: '点进去Gitee获取最新开源版本',
           link: 'https://gitee.com/lolicode/scui',
@@ -89,7 +89,7 @@ export default {
         {
           id: 3,
           type: 'system',
-          avatar: 'img/logo.png',
+          avatar: '/img/logo.png',
           title: '感谢登录SCUI Admin',
           describe: 'Vue 3.0 + Vue-Router 4.0 + ElementPlus + Axios 后台管理系统。',
           link: 'https://gitee.com/lolicode/scui',
