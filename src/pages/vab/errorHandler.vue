@@ -32,23 +32,23 @@
 </template>
 
 <script>
-/* eslint-disable */
-//为了演示异常，跳过eslint
+/* eslint-disable no-console */
+// 为了演示异常，跳过eslint
 export default {
-  name: 'codebug',
+  name: 'Codebug',
   methods: {
-    ReferenceError(){
-      console.log(obj);
+    ReferenceError () {
+      console.log(obj)
     },
-    TypeError(){
+    TypeError () {
       const obj = null
-      console.log(obj.a);
+      console.log(obj.a)
     },
-    RangeError(){
+    RangeError () {
       const n = 1
       n.toFixed(101)
-    }
-  }
+    },
+  },
 }
 </script>
 
