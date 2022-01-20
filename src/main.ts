@@ -36,7 +36,7 @@ import 'makeit-captcha/dist/captcha.min.css'
   Object.values(import.meta.globEager('./plugins/*.ts')).map(i => i.install?.(context))
 
   app.use(router)
-  app.use(ElementPlus)
+  app.use(ElementPlus, { size: 'small' })
   app.use(i18n)
 
   await router.isReady()

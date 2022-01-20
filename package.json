@@ -10,7 +10,7 @@
     "@vueuse/core": "^7.5.3",
     "@vueuse/head": "^0.7.4",
     "crypto-js": "4.1.1",
-    "element-plus": "^1.3.0-beta.5",
+    "element-plus": "1.2.0-beta.6",
     "makeit-captcha": "^1.2.5",
     "naive-ui": "^2.20.0",
     "nprogress": "^0.2.0",
