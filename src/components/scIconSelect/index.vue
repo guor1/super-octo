@@ -29,7 +29,7 @@
               <ul @click="selectIcon">
                 <li v-for="icon in item.icons" :key="icon">
                   <span :data-icon="icon" />
-                  <el-icon><Icon :icon="icon" /></el-icon>
+                  <ep-icon :icon="icon" />
                 </li>
               </ul>
             </el-scrollbar>
@@ -41,13 +41,9 @@
 </template>
 
 <script>
-import { Icon } from '@iconify/vue'
 import config from '~/config/iconSelect'
 
 export default {
-  components: {
-    Icon,
-  },
   props: {
     modelValue: { type: String, default: '' },
     placeholder: { type: String, default: '请输入或者选择图标' },

@@ -24,7 +24,7 @@
     <div class="sc-upload-uploader" @click="fileSelect && showfileSelect()">
       <el-upload ref="upload" class="uploader" :disabled="fileSelect" :action="action" :accept="accept" multiple :show-file-list="false" :file-list="defaultFileList" :before-upload="before" :on-progress="progress" :on-success="success" :on-change="change" :on-remove="remove" :on-error="error" :http-request="request">
         <div class="file-empty">
-          <el-icon><Icon :icon="icon" /></el-icon>
+          <ep-icon :icon="icon" />
           <h4 v-if="title">{{ title }}</h4>
         </div>
       </el-upload>
@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import { Icon } from '@iconify/vue'
 import { defineAsyncComponent } from 'vue'
 import config from '~/config/upload'
 const scFileSelect = defineAsyncComponent(() => import('~/components/scFileSelect'))
@@ -49,7 +48,6 @@ const scFileSelect = defineAsyncComponent(() => import('~/components/scFileSelec
 export default {
   components: {
     scFileSelect,
-    Icon,
   },
   props: {
     modelValue: { type: String, default: '' },

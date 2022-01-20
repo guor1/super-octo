@@ -1,7 +1,7 @@
 <template>
+  <sc-page-header title="指令" description="可用于非常复杂的表单提交，如一些较为简单的表单提交应使用dialog或者drawer更合适" icon="ep:burger" />
   <el-main>
     <el-alert title="来自AVUE的灵感, 业务会有表单里含有对象数组的可能, 进行封装后进行增删改操作, 并且支持联动form表单的禁用属性" type="success" style="margin-bottom:20px;" />
-
     <el-card shadow="never">
       <el-form ref="ruleForm" :model="form" :rules="rules" label-width="100px">
         <el-form-item label="标题" prop="title">
