@@ -186,7 +186,6 @@
 <script>
 import { Icon } from '@iconify/vue'
 import Topbar from './components/topbar.vue'
-// import Tags from './components/tags.vue'
 import userbar from './components/userbar.vue'
 import { useSettingStore } from '~/stores/setting'
 import { useKeepAliveStore } from '~/stores/keepAlive'
@@ -198,7 +197,6 @@ export default {
   components: {
     Topbar,
     Icon,
-    // Tags,
     userbar,
   },
   setup () {

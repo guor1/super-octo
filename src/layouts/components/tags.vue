@@ -17,17 +17,21 @@
       <li :class="contextMenuItem.meta.affix?'disabled':''" @click="closeTabs()"><el-icon><close /></el-icon>关闭标签</li>
       <li @click="closeOtherTabs()"><el-icon><folder-delete /></el-icon>关闭其他标签</li>
       <hr>
-      <li @click="maximize()"><el-icon><full-screen /></el-icon>最大化</li>
+      <li @click="maximize()"><Icon icon="ep-full-screen" />最大化</li>
       <li @click="openWindow()"><el-icon><copy-document /></el-icon>在新的窗口中打开</li>
     </ul>
   </transition>
 </template>
 
 <script>
+import { Icon } from '@iconify/vue'
 import Sortable from 'sortablejs'
 
 export default {
   name: 'Tags',
+  components: {
+    Icon,
+  },
   props: {},
   data () {
     return {

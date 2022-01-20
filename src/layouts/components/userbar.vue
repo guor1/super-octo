@@ -1,11 +1,11 @@
 <template>
   <div class="user-bar">
     <div class="screen panel-item hidden-sm-and-down" @click="screen">
-      <el-icon><full-screen /></el-icon>
+      <Icon icon="ep-full-screen" />
     </div>
     <div class="msg panel-item" @click="showMsg">
       <el-badge :hidden="msgList.length==0" :value="msgList.length" class="badge" type="danger">
-        <el-icon><chat-dot-round /></el-icon>
+        <Icon icon="ep-chat-dot-round" />
       </el-badge>
       <el-drawer v-model="msg" title="新消息" :size="400" append-to-body destroy-on-close>
         <el-container>
@@ -43,7 +43,7 @@
       <div class="user-avatar">
         <el-avatar :size="30">{{ userNameF }}</el-avatar>
         <label>{{ userName }}</label>
-        <el-icon class="el-icon--right"><arrow-down /></el-icon>
+        <Icon icon="ep-arrow-down" />
       </div>
       <template #dropdown>
         <el-dropdown-menu>
@@ -57,7 +57,11 @@
 </template>
 
 <script>
+import { Icon } from '@iconify/vue'
 export default {
+  components: {
+    Icon,
+  },
   data () {
     return {
       userName: '',
@@ -96,8 +100,8 @@ export default {
   },
   created () {
     const userInfo = this.$TOOL.data.get('USER_INFO')
-    this.userName = userInfo.userName
-    this.userNameF = this.userName.substring(0, 1)
+    this.userName = userInfo?.userName
+    this.userNameF = this.userName?.substring(0, 1)
   },
   methods: {
     // 个人信息
