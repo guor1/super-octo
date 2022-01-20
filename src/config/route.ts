@@ -87,12 +87,12 @@ export const userRoutes: Array<MenuItem> = [
         name: 'cropper',
         meta: { title: '图像剪裁', type: 'menu' },
         component: 'vab/cropper',
-      }, {
-        path: '/vab/dialog',
-        name: 'dialogExtend',
-        meta: { title: '弹窗扩展', type: 'menu' },
-        component: 'vab/dialog',
       }],
+    }, {
+      path: '/vab/dialog',
+      name: 'dialogExtend',
+      meta: { title: '弹窗扩展', icon: 'ep:eleme', type: 'menu' },
+      component: 'vab/dialog',
     }, {
       path: '/vab/workflow',
       name: 'workflow',
@@ -136,35 +136,10 @@ export const userRoutes: Array<MenuItem> = [
       meta: { title: '角色管理', icon: 'ep-notebook', type: 'menu' },
       component: 'setting/role',
     }, {
-      path: '/setting/dic',
-      name: 'dic',
-      meta: { title: '字典管理', icon: 'ep-document', type: 'menu' },
-      component: 'setting/dic',
-    }, {
-      path: '/setting/table',
-      name: 'tableSetting',
-      meta: { title: '表格列管理', icon: 'ep-scale-to-original', type: 'menu' },
-      component: 'setting/table',
-    }, {
       path: '/setting/menu',
       name: 'settingMenu',
       meta: { title: '菜单管理', icon: 'ep-fold', type: 'menu' },
       component: 'setting/menu',
-    }, {
-      path: '/setting/task',
-      name: 'task',
-      meta: { title: '计划任务', icon: 'ep-alarm-clock', type: 'menu' },
-      component: 'setting/task',
-    }, {
-      path: '/setting/client',
-      name: 'client',
-      meta: { title: '应用管理', icon: 'ep-help-filled', type: 'menu' },
-      component: 'setting/client',
-    }, {
-      path: '/setting/log',
-      name: 'log',
-      meta: { title: '系统日志', icon: 'ep-warning', type: 'menu' },
-      component: 'setting/log',
     }],
   },
 ]

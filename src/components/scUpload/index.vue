@@ -2,7 +2,7 @@
   <div v-loading="loading" class="sc-upload" element-loading-background="rgba(0, 0, 0, 0.5)" :style="style">
     <div v-if="tempImg || img" class="sc-upload-file">
       <div class="mask">
-        <span class="del" @click.stop="del"><el-icon><icon-ep-delete /></el-icon></span>
+        <span class="del" @click.stop="del"><ep-icon icon="ep:delete" /></span>
       </div>
       <el-image v-if="fileIsImg" class="image" :src="tempImg || img" :preview-src-list="[img]" fit="cover" hide-on-click-modal append-to-body :z-index="9999" />
       <a v-else :href="img" class="file" target="_blank"><el-icon><icon-ep-document /></el-icon></a>
@@ -11,19 +11,19 @@
       <el-upload ref="upload" class="uploader" :disabled="fileSelect" :auto-upload="!cropper" :on-change="change" :accept="accept" :action="action" :show-file-list="false" :before-upload="before" :on-success="success" :on-error="error" :http-request="request">
         <slot>
           <div class="file-empty">
-            <el-icon><Icon :icon="icon" /></el-icon>
+            <ep-icon :icon="icon" />
             <h4 v-if="title">{{ title }}</h4>
           </div>
         </slot>
       </el-upload>
     </div>
-    <el-dialog v-model="cropperDialogVisible" title="剪裁" :width="580" destroy-on-close>
+    <sc-dialog v-model="cropperDialogVisible" title="剪裁" :width="580" destroy-on-close>
       <sc-cropper ref="cropper" :src="cropperImg" :compress="compress" :aspect-ratio="aspectRatio" />
       <template #footer>
         <el-button @click="cropperDialogVisible=false">取 消</el-button>
         <el-button type="primary" @click="cropperSave">确 定</el-button>
       </template>
-    </el-dialog>
+    </sc-dialog>
     <el-dialog v-model="fileSelectDialogVisible" title="打开" :width="880" destroy-on-close>
       <sc-file-select @submit="fileSelectSubmit">
         <template #do>
@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import { Icon } from '@iconify/vue'
 import { defineAsyncComponent } from 'vue'
 import config from '~/config/upload'
 const scCropper = defineAsyncComponent(() => import('~/components/scCropper.vue'))
@@ -46,7 +45,6 @@ export default {
   components: {
     scCropper,
     scFileSelect,
-    Icon,
   },
   props: {
     height: { type: Number, default: 120 },

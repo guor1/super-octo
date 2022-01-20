@@ -10,27 +10,22 @@
         target="_blank"
         @click.stop="() => { }"
       />
-      <el-icon v-if="navMenu.meta && navMenu.meta.icon">
-        <Icon :icon="navMenu.meta.icon || 'ep-menu'" />
-      </el-icon>
+      <ep-icon v-if="navMenu.meta && navMenu.meta.icon" :icon="navMenu.meta.icon || 'ep:eleme'" />
       <template #title>
         <span>{{ navMenu.meta.title }}</span>
       </template>
     </el-menu-item>
     <el-sub-menu v-else :index="navMenu.path">
       <template #title>
-        <el-icon v-if="navMenu.meta && navMenu.meta.icon">
-          <Icon :icon="navMenu.meta.icon || 'ep-menu'" />
-        </el-icon>
+        <ep-icon v-if="navMenu.meta && navMenu.meta.icon" :icon="navMenu.meta.icon || 'ep:eleme'" />
         <span>{{ navMenu.meta.title }}</span>
       </template>
-      <NavMenu :nav-menus="navMenu.children" />
+      <nav-menu :nav-menus="navMenu.children" />
     </el-sub-menu>
   </template>
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import type { MenuItem } from '~/types'
 defineProps<{ navMenus: Array<MenuItem> }>()
 

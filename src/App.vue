@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+const locale = reactive(zhCn)
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
@@ -11,7 +13,7 @@ useHead({
 </script>
 
 <template>
-  <el-config-provider :button="{autoInsertSpace: false}">
+  <el-config-provider :button="{autoInsertSpace: false}" :locale="locale">
     <router-view />
   </el-config-provider>
 </template>

@@ -16,11 +16,11 @@
         </slot>
         <div class="sc-dialog__headerbtn">
           <button v-if="showFullscreen" aria-label="fullscreen" type="button" @click="setFullscreen">
-            <el-icon v-if="isFullscreen" class="el-dialog__close"><el-icon-bottom-left /></el-icon>
-            <el-icon v-else class="el-dialog__close"><el-icon-full-screen /></el-icon>
+            <ep-icon v-if="isFullscreen" class="el-dialog__close" icon="ep:bottom-left" />
+            <ep-icon v-else class="el-dialog__close" icon="ep:full-screen" />
           </button>
           <button v-if="showClose" aria-label="close" type="button" @click="closeDialog">
-            <el-icon class="el-dialog__close"><el-icon-close /></el-icon>
+            <ep-icon class="el-dialog__close" icon="ep:close" />
           </button>
         </div>
       </template>

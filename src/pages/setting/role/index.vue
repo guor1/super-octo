@@ -21,7 +21,7 @@
     </el-header>
     <el-main class="nopadding">
       <scTable ref="table" :api-obj="apiObj" row-key="id" hide-pagination @selection-change="selectionChange">
-        <el-table-column type="selection" width="50" />
+        <el-table-column type="selection" width="50" align="center" />
         <el-table-column label="#" type="index" width="50" />
         <el-table-column label="角色名称" prop="label" width="250" />
         <el-table-column label="别名" prop="alias" width="150" />

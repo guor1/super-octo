@@ -8,19 +8,12 @@
   </sc-dialog>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      visible: true,
-    }
-  },
-  mounted () {
-    console.log('加载./dialog1组件完成')
-  },
-  methods: {
+<script setup>
+const visible = ref(true)
 
-  },
+function onMounted () {
+  // eslint-disable-next-line no-console
+  console.log('加载./dialog1组件完成')
 }
 </script>
 

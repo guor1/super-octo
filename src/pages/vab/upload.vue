@@ -5,7 +5,7 @@
       <sc-upload v-model="imgurl2" title="自定义标题" icon="ep:picture" />
       <sc-upload v-model="imgurl3" :api-obj="uploadApi" accept=".xls,.xlsx" :on-success="success" :width="220">
         <div class="custom-empty">
-          <el-icon><icon-ep-upload /></el-icon>
+          <ep-icon icon="ep:upload" />
           <p>自定义插槽</p>
         </div>
       </sc-upload>
