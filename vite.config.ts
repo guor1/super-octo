@@ -6,7 +6,6 @@ import Layouts from 'vite-plugin-vue-layouts'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Inspect from 'vite-plugin-inspect'
 import WindiCSS from 'vite-plugin-windicss'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -46,7 +45,6 @@ export default defineConfig({
           prefix: 'icon',
           enabledCollections: ['carbon', 'ep', 'logos'],
         }),
-        NaiveUiResolver(),
       ],
       dts: 'src/components.d.ts',
     }),

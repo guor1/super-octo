@@ -1,7 +1,7 @@
 <template>
   <el-button>
     <ep-icon :icon="icon" />
-    <slot />
+    <span style="vertical-align: middle;"> <slot /> </span>
   </el-button>
 </template>
 <script setup lang="ts">

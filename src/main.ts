@@ -15,7 +15,6 @@ import App from './App.vue'
 import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
 import 'virtual:windi-utilities.css'
-import 'makeit-captcha/dist/captcha.min.css'
 
 (async () => {
   // 创建应用
