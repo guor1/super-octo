@@ -189,7 +189,7 @@ import Topbar from './components/topbar.vue'
 import userbar from './components/userbar.vue'
 import { useSettingStore } from '~/stores/setting'
 import { useKeepAliveStore } from '~/stores/keepAlive'
-import { userRoutes } from '~/config/route'
+import userRoutes from '~/config/route'
 import routes from '~pages'
 
 export default {

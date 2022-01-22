@@ -19,7 +19,8 @@
       "vite-plugin-pages/client",
       "vite-plugin-vue-layouts/client",
       "unplugin-icons/types/vue",
-      "element-plus/global"
+      "element-plus/global",
+      "@intlify/vite-plugin-vue-i18n/client"
     ],
     "paths": {
       "~/*": ["src/*"]

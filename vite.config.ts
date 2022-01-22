@@ -9,6 +9,7 @@ import Components from 'unplugin-vue-components/vite'
 import Inspect from 'vite-plugin-inspect'
 import WindiCSS from 'vite-plugin-windicss'
 import AutoImport from 'unplugin-auto-import/vite'
+import vueI18n from '@intlify/vite-plugin-vue-i18n'
 
 export default defineConfig({
   resolve: {
@@ -18,6 +19,13 @@ export default defineConfig({
   },
   plugins: [
     Vue(),
+
+    vueI18n({
+      // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
+      // compositionOnly: false,
+      // you need to set i18n resource including paths !
+      include: path.resolve(__dirname, 'src/locales/**'),
+    }),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),

@@ -3,9 +3,8 @@
 // 比较动态路由在meta中多加入了role角色权限，为数组类型。一个菜单是否有权限显示，取决于它以及后代菜单是否有权限。
 // routes 显示在左侧菜单中的路由(显示顺序在动态路由之前)
 // 示例如下
-import type { MenuItem } from '~/types'
 
-export const userRoutes: Array<MenuItem> = [
+const userRoutes = [
   {
     name: 'home',
     path: '/home',
@@ -138,3 +137,5 @@ export const userRoutes: Array<MenuItem> = [
     }],
   },
 ]
+
+export default userRoutes

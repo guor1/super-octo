@@ -1,7 +1,6 @@
 import NProgress from 'nprogress'
 import config from '~/config'
 import tool from '~/utils/tool'
-import type { UserModule } from '~/types'
 
 // 设置标题
 document.title = config.APP_NAME
@@ -9,7 +8,7 @@ document.title = config.APP_NAME
 const whiteList = ['/login']
 const dev = true
 
-export const install: UserModule = ({ router }) => {
+export const install = ({ router }) => {
   router.beforeEach(async (to, from, next) => {
     NProgress.start()
     if (dev) {
