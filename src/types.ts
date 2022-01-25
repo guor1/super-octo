@@ -12,15 +12,15 @@ export type UserModule = (ctx: AppContext) => void
  * 菜单
  */
 export interface MenuItem {
-  name: string
-  path: string
+  name: String
+  path: String
   meta: {
-    title: string
-    type?: string
-    icon?: string
-    hidden?: boolean
-    role?: Array<string>
+    title: String
+    type?: String
+    icon?: String
+    hidden?: Boolean
+    role?: Array<String>
   }
-  component?: string
+  component?: String
   children?: Array<MenuItem>
 }

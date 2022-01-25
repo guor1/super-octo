@@ -15,7 +15,7 @@ axios.interceptors.request.use(
     if (token)
       config.headers[sysConfig.TOKEN_NAME] = sysConfig.TOKEN_PREFIX + token
 
-    if (!sysConfig.REQUEST_CACHE && config.method == 'get') {
+    if (!sysConfig.REQUEST_CACHE && config.method === 'get') {
       config.params = config.params || {}
       config.params._ = new Date().getTime()
     }
@@ -34,19 +34,19 @@ axios.interceptors.response.use(
   },
   (error) => {
     if (error.response) {
-      if (error.response.status == 404) {
+      if (error.response.status === 404) {
         ElNotification.error({
           title: '请求错误',
           message: 'Status:404，正在请求不存在的服务器记录！',
         })
       }
-      else if (error.response.status == 500) {
+      else if (error.response.status === 500) {
         ElNotification.error({
           title: '请求错误',
           message: error.response.data.message || 'Status:500，服务器发生错误！',
         })
       }
-      else if (error.response.status == 401) {
+      else if (error.response.status === 401) {
         ElMessageBox.confirm('当前用户已被登出或无权限访问当前资源，请尝试重新登录后再操作。', '无权限访问', {
           type: 'error',
           closeOnClickModal: false,

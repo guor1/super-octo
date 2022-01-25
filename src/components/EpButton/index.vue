@@ -4,8 +4,8 @@
     <span style="vertical-align: middle;"> <slot /> </span>
   </el-button>
 </template>
-<script setup lang="ts">
+<script setup>
 import { Icon } from '@iconify/vue'
 
-defineProps<{ icon: string }>()
+defineProps({ icon: String })
 </script>

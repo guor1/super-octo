@@ -5,7 +5,7 @@ export const useKeepAliveStore = defineStore('keepAlive', () => {
   const routeKey = ref('')
   const routeShow = ref(true)
 
-  function pushKeepLive (component: string) {
+  function pushKeepLive (component: String) {
     if (!keepLiveRoute.value.includes(component))
       keepLiveRoute.value.push(component)
   }

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 const locale = reactive(zhCn)
 // https://github.com/vueuse/head

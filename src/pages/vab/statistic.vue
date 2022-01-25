@@ -34,7 +34,7 @@
   </el-main>
 </template>
 
-<script setup lang="ts">
+<script setup>
 const trendValue1 = ref(7.7)
 const trendValue2 = ref(-18.9)
 </script>

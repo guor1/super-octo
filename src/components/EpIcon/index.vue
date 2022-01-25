@@ -3,8 +3,13 @@
     <Icon :icon="icon" />
   </el-icon>
 </template>
-<script setup lang="ts">
+<script setup>
 import { Icon } from '@iconify/vue'
 
-defineProps<{ icon: string }>()
+defineProps({
+  icon: {
+    type: String,
+    default: 'ep:eleme',
+  },
+})
 </script>

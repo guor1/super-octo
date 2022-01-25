@@ -25,9 +25,8 @@
   </template>
 </template>
 
-<script setup lang="ts">
-import type { MenuItem } from '~/types'
-defineProps<{ navMenus: Array<MenuItem> }>()
+<script setup>
+defineProps({ navMenus: Array })
 
 function hasChildren (item: MenuItem) {
   return item.children && !item.children.every(item => item.meta.hidden)
