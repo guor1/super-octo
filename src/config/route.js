@@ -134,6 +134,10 @@ const userRoutes = [
       name: 'settingMenu',
       meta: { title: '菜单管理', icon: 'ep-fold', type: 'menu' },
       component: 'setting/menu',
+    }, {
+      name: 'setting1',
+      path: 'http://www.baidu.com',
+      meta: { title: '百度', type: 'link' },
     }],
   },
 ]
