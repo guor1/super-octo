@@ -62,6 +62,7 @@ export default {
     aspectRatio: { type: Number, default: NaN },
     onSuccess: { type: Function, default: () => { return true } },
   },
+  emits: ['update:modelValue'],
   data () {
     return {
       loading: false,
@@ -117,7 +118,7 @@ export default {
         this.fileIsImg = false
     },
     change (file) {
-      if (this.cropper && file.status == 'ready') {
+      if (this.cropper && file.status === 'ready') {
         this.isImg(file.name)
         if (!this.fileIsImg) {
           this.$notify.warning({
@@ -145,11 +146,11 @@ export default {
       this.loading = false
       this.tempImg = ''
       const os = this.onSuccess(res)
-      if (os != undefined && os == false)
+      if (os !== undefined && os === false)
         return false
 
       const response = config.parseData(res)
-      if (response.code != config.successCode)
+      if (response.code !== config.successCode)
         this.$message.warning(response.msg || '上传文件未知错误')
 
       else

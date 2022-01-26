@@ -59,6 +59,7 @@ export default {
     icon: { type: String, default: 'ep:plus' },
     fileSelect: { type: Boolean, default: false },
   },
+  emits: ['update:modelValue'],
   data () {
     return {
       value: '',

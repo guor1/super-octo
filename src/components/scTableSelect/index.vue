@@ -14,7 +14,7 @@
         <div class="sc-table-select__header">
           <slot name="header" :form="formData" :submit="formSubmit" />
         </div>
-        <el-table ref="table" :data="tableData" :height="245" :highlight-current-row="!multiple" @row-click="click" @select="select" @select-all="selectAll">
+        <el-table ref="table" size="small" :data="tableData" :height="245" :highlight-current-row="!multiple" @row-click="click" @select="select" @select-all="selectAll">
           <el-table-column v-if="multiple" type="selection" width="45" />
           <el-table-column v-else type="index" width="45">
             <template #default="scope"><span>{{ scope.$index+(currentPage - 1) * pageSize + 1 }}</span></template>
@@ -44,6 +44,7 @@ export default {
     mode: { type: String, default: 'popover' },
     props: { type: Object, default: () => {} },
   },
+  emits: ['update:modelValue'],
   data () {
     return {
       loading: false,
@@ -153,7 +154,7 @@ export default {
         this.defaultValue.push(row)
 
       else
-        this.defaultValue.splice(this.defaultValue.findIndex(item => item[this.defaultProps.value] == row[this.defaultProps.value]), 1)
+        this.defaultValue.splice(this.defaultValue.findIndex(item => item[this.defaultProps.value] === row[this.defaultProps.value]), 1)
 
       this.autoCurrentLabel()
       this.$emit('update:modelValue', this.defaultValue)
@@ -163,16 +164,16 @@ export default {
       const isAllSelect = rows.length > 0
       if (isAllSelect) {
         rows.forEach((row) => {
-          const isHas = this.defaultValue.find(item => item[this.defaultProps.value] == row[this.defaultProps.value])
+          const isHas = this.defaultValue.find(item => item[this.defaultProps.value] === row[this.defaultProps.value])
           if (!isHas)
             this.defaultValue.push(row)
         })
       }
       else {
         this.tableData.forEach((row) => {
-          const isHas = this.defaultValue.find(item => item[this.defaultProps.value] == row[this.defaultProps.value])
+          const isHas = this.defaultValue.find(item => item[this.defaultProps.value] === row[this.defaultProps.value])
           if (isHas)
-            this.defaultValue.splice(this.defaultValue.findIndex(item => item[this.defaultProps.value] == row[this.defaultProps.value]), 1)
+            this.defaultValue.splice(this.defaultValue.findIndex(item => item[this.defaultProps.value] === row[this.defaultProps.value]), 1)
         })
       }
       this.autoCurrentLabel()
