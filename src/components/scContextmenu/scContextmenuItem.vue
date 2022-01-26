@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { Icon } from '@iconify/vue'
 export default {
   inject: ['menuClick'],
   props: {
