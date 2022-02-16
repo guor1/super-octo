@@ -16,7 +16,7 @@ specifiers:
   cropperjs: 1.5.12
   cross-env: ^7.0.3
   crypto-js: 4.1.1
-  element-plus: 2.0.1
+  element-plus: 2.0.2
   eslint: ^8.6.0
   nprogress: ^0.2.0
   pinia: ^2.0.9
@@ -46,7 +46,7 @@ dependencies:
   axios: 0.24.0
   cropperjs: 1.5.12
   crypto-js: 4.1.1
-  element-plus: 2.0.1_vue@3.2.27
+  element-plus: 2.0.2_vue@3.2.27
   nprogress: 0.2.0
   pinia: 2.0.9_typescript@4.5.4+vue@3.2.27
   sortablejs: 1.14.0
@@ -777,8 +777,8 @@ packages:
       vue-demi: 0.12.1_vue@3.2.27
     dev: false
 
-  /@vueuse/core/7.5.5_vue@3.2.27:
-    resolution: {integrity: sha512-RBDqmIoGfak4h3xdXa/Av+ibkb8NY044wEy6+PG2FAWNaID8/FkqmSFjbxogrbmpSX1yZ1PBHrM8DUp/FrIpbg==}
+  /@vueuse/core/7.6.2_vue@3.2.27:
+    resolution: {integrity: sha512-bjAbXJVJO6aElMaZtDz2B70C0L6jFk/jGVqJxWZS5huffxA6dW5DN6tQQJwzOnx9B9rDhePHJIFKsix0qZIH2Q==}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
@@ -788,7 +788,7 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@vueuse/shared': 7.5.5_vue@3.2.27
+      '@vueuse/shared': 7.6.2_vue@3.2.27
       vue: 3.2.27
       vue-demi: 0.12.1_vue@3.2.27
     dev: false
@@ -816,8 +816,8 @@ packages:
       vue-demi: 0.12.1_vue@3.2.27
     dev: false
 
-  /@vueuse/shared/7.5.5_vue@3.2.27:
-    resolution: {integrity: sha512-mzzTsotHQRPnPAChy8iCv6ek/90CKYhAFyMRgNsMxpT0afZJkbMO/X0OaOu/1NuGbgb8UVjlsWKmCUgKTOF5hA==}
+  /@vueuse/shared/7.6.2_vue@3.2.27:
+    resolution: {integrity: sha512-ThDld4Mx501tahRuHV6qJGkwCr17GknZrOzlD02Na9qJcH7Pq0quNTLx5cNDou7b1CKNvE3BXi2w/hz9KuPNTQ==}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
@@ -1256,22 +1256,25 @@ packages:
       domhandler: 4.3.0
     dev: true
 
-  /element-plus/2.0.1_vue@3.2.27:
-    resolution: {integrity: sha512-Cdx3JhbMNGwVsU12DUewIltJ1hUYVSgx2iBB8AuNzzOxAqcxSA9e7p2lfNp8oCBQeh4ThRSaOkdLnJyO4mS3qQ==}
+  /element-plus/2.0.2_vue@3.2.27:
+    resolution: {integrity: sha512-URjC0HwwiqtlLxqTmHXQ31WXrdAq4ChWyyn52OcQs3PRsnMPfahGVq2AWnfzzlzlhVeI5lY3HQiuB1zDathS+g==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
       '@ctrl/tinycolor': 3.4.0
       '@element-plus/icons-vue': 0.2.7_vue@3.2.27
       '@popperjs/core': 2.11.2
-      '@vueuse/core': 7.5.5_vue@3.2.27
+      '@vueuse/core': 7.6.2_vue@3.2.27
       async-validator: 4.0.7
       dayjs: 1.10.7
       lodash: 4.17.21
+      lodash-es: 4.17.21
+      lodash-unified: 1.0.1_lodash-es@4.17.21+lodash@4.17.21
       memoize-one: 6.0.0
       normalize-wheel-es: 1.1.1
       vue: 3.2.27
     transitivePeerDependencies:
+      - '@types/lodash-es'
       - '@vue/composition-api'
     dev: false
 
@@ -2458,6 +2461,21 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
+  /lodash-unified/1.0.1_lodash-es@4.17.21+lodash@4.17.21:
+    resolution: {integrity: sha512-Py+twfpWn+2dFQWCuGcp21WiQRwZwnm1cyE3piSt/VtBVKVyxlR58WgOVRzXtmdmDRGJKH8F8GPaA29WK/yK8g==}
+    peerDependencies:
+      '@types/lodash-es': '*'
+      lodash: '*'
+      lodash-es: '*'
+    dependencies:
+      lodash: 4.17.21
+      lodash-es: 4.17.21
+    dev: false
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
