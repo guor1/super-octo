@@ -1,21 +1,19 @@
 // register vue composition api globally
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-import 'element-plus/theme-chalk/display.css'
-
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
-import i18n from './locales'
 import App from './App.vue'
 
-// windicss layers
-import 'virtual:windi-base.css'
-import 'virtual:windi-components.css'
-import 'virtual:windi-utilities.css'
+// normalize.css
+import '@unocss/reset/normalize.css'
+// reset.css by Eric Meyer https://meyerweb.com/eric/tools/css/reset/index.html
+import '@unocss/reset/eric-meyer.css'
+// preflights from tailwind
+import '@unocss/reset/tailwind.css'
+import 'uno.css'
 
-(async () => {
+(async() => {
   // 创建应用
   const app = createApp(App)
 
@@ -34,8 +32,6 @@ import 'virtual:windi-utilities.css'
   Object.values(import.meta.globEager('./plugins/*.js')).map(i => i.install?.(context))
 
   app.use(router)
-  app.use(ElementPlus)
-  app.use(i18n)
 
   await router.isReady()
   app.mount('#app', true)
