@@ -140,6 +140,17 @@ const userRoutes = [
       meta: { title: '百度', type: 'link' },
     }],
   },
+  {
+    name: 'lowcode',
+    meta: { title: '低代码', icon: 'ep-eleme-filled', type: 'menu' },
+    children: [
+      {
+        name: 'dashboard',
+        path: '/admin/entity/entity-edit',
+        meta: { title: '创建实体', icon: 'ep-menu' },
+        component: 'home',
+      }],
+  },
 ]
 
 export default userRoutes

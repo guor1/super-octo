@@ -11,11 +11,11 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import App from './App.vue'
 
 // normalize.css
-import '@unocss/reset/normalize.css'
+// import '@unocss/reset/normalize.css'
 // reset.css by Eric Meyer https://meyerweb.com/eric/tools/css/reset/index.html
-import '@unocss/reset/eric-meyer.css'
+// import '@unocss/reset/eric-meyer.css'
 // preflights from tailwind
-import '@unocss/reset/tailwind.css'
+// import '@unocss/reset/tailwind.css'
 import 'uno.css'
 
 (async() => {
