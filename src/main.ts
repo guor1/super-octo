@@ -1,4 +1,9 @@
 // register vue composition api globally
+// 开发阶段用用
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/display.css'
+
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import generatedRoutes from 'virtual:generated-pages'
@@ -31,6 +36,7 @@ import 'uno.css'
   // 安装插件
   Object.values(import.meta.globEager('./plugins/*.js')).map(i => i.install?.(context))
 
+  app.use(ElementPlus)
   app.use(router)
 
   await router.isReady()
