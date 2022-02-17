@@ -9,7 +9,7 @@ const whiteList = ['/login']
 const dev = true
 
 export const install = ({ router }) => {
-  router.beforeEach(async (to, from, next) => {
+  router.beforeEach(async(to, from, next) => {
     NProgress.start()
     if (dev) {
       next()

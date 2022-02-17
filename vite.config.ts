@@ -9,7 +9,6 @@ import Components from 'unplugin-vue-components/vite'
 import Inspect from 'vite-plugin-inspect'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import vueI18n from '@intlify/vite-plugin-vue-i18n'
 import { presetAttributify, presetIcons, presetUno } from 'unocss'
 import Unocss from 'unocss/vite'
 
@@ -21,13 +20,6 @@ export default defineConfig({
   },
   plugins: [
     Vue(),
-
-    vueI18n({
-      // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
-      // compositionOnly: false,
-      // you need to set i18n resource including paths !
-      include: path.resolve(__dirname, 'src/locales/**'),
-    }),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),
