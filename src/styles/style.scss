@@ -2,3 +2,7 @@
 @import 'fix.scss';
 @import 'pages.scss';
 @import 'media.scss';
+
+:root {
+    $--el-border-radius-base: 0px;
+}

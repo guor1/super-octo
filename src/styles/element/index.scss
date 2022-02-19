@@ -1,0 +1,6 @@
+/* 只需要重写你需要的即可 */
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $--el-border-radius-base: 0 !default,
+);
+
+@use "element-plus/theme-chalk/src/index.scss" as *;

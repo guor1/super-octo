@@ -20,4 +20,5 @@ useHead({
 <style lang="scss">
 @import '~/styles/style.scss';
 @import '~/styles/theme/dark.scss';
+@import '~/styles/element/index.scss';
 </style>
