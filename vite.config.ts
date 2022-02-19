@@ -8,7 +8,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import Inspect from 'vite-plugin-inspect'
 import AutoImport from 'unplugin-auto-import/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { presetAttributify, presetIcons, presetUno } from 'unocss'
 import Unocss from 'unocss/vite'
 
@@ -36,7 +36,7 @@ export default defineConfig({
         '@vueuse/core',
       ],
       dts: 'src/auto-imports.d.ts',
-      resolvers: [ElementPlusResolver()],
+      // resolvers: [ElementPlusResolver()],
     }),
 
     // https://github.com/antfu/vite-plugin-components
@@ -48,7 +48,7 @@ export default defineConfig({
           prefix: 'icon',
           enabledCollections: ['carbon', 'ep', 'logos'],
         }),
-        ElementPlusResolver(),
+        // ElementPlusResolver(),
       ],
       dts: 'src/components.d.ts',
     }),
