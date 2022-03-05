@@ -3,8 +3,6 @@
     <div class="login_adv" style="background-image: url(/img/auth_banner.jpg);">
       <div class="login_adv__title">
         <h2>SCUI</h2>
-        <h4>{{ $t('login.slogan') }}</h4>
-        <p>{{ $t('login.describe') }}</p>
       </div>
       <div class="login_adv__bottom">
         © {{ $CONFIG.APP_NAME }} {{ $CONFIG.APP_VER }}
@@ -21,7 +19,9 @@
           </el-button>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item v-for="item in lang" :key="item.value" :command="item" :class="{'selected':config.lang==item.value}">{{ item.name }}</el-dropdown-item>
+              <el-dropdown-item v-for="item in lang" :key="item.value" :command="item" :class="{'selected':config.lang==item.value}">
+                {{ item.name }}
+              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -32,24 +32,24 @@
             <img :alt="$CONFIG.APP_NAME" src="/img/logo.png">
             <label>{{ $CONFIG.APP_NAME }}</label>
           </div>
-          <h2>{{ $t('login.signInTitle') }}</h2>
+          <h2>用户登录</h2>
         </div>
         <el-form ref="loginForm" :model="ruleForm" :rules="rules" label-width="0" size="large">
           <el-form-item prop="user">
-            <el-input v-model="ruleForm.user" clearable :placeholder="$t('login.userPlaceholder')">
+            <el-input v-model="ruleForm.user" placeholder="用户名">
               <template #prefix>
                 <ep-icon icon="ep-user" class="el-input__icon" />
               </template>
               <template #append>
                 <el-select v-model="userType" style="width: 130px;">
-                  <el-option :label="$t('login.admin')" value="admin" />
-                  <el-option :label="$t('login.user')" value="user" />
+                  <el-option label="管理员" value="admin" />
+                  <el-option label="用户" value="user" />
                 </el-select>
               </template>
             </el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input v-model="ruleForm.password" clearable show-password :placeholder="$t('login.PWPlaceholder')">
+            <el-input v-model="ruleForm.password" show-password placeholder="密码">
               <template #prefix>
                 <ep-icon icon="ep-lock" class="el-input__icon" />
               </template>
@@ -58,19 +58,23 @@
           <el-form-item style="margin-bottom: 10px;">
             <el-row>
               <el-col :span="12">
-                <el-checkbox v-model="ruleForm.autologin" :label="$t('login.rememberMe')" />
+                <el-checkbox v-model="ruleForm.autologin" label="记住我" />
               </el-col>
               <el-col :span="12" style="text-align: right;">
-                <el-button type="text">{{ $t('login.forgetPassword') }}？</el-button>
+                <el-button type="text">
+                  忘记密码？
+                </el-button>
               </el-col>
             </el-row>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" style="width: 100%;" :loading="islogin" round @click="login">{{ $t('login.signIn') }}</el-button>
+            <el-button type="primary" style="width: 100%;" :loading="islogin" round @click="login">
+              登录
+            </el-button>
           </el-form-item>
         </el-form>
 
-        <el-divider>{{ $t('login.signInOther') }}</el-divider>
+        <el-divider>其他登录方式</el-divider>
 
         <div class="login-oauth">
           <el-button size="small" type="success" circle>
@@ -84,7 +88,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       userType: 'admin',
       ruleForm: {
@@ -94,10 +98,10 @@ export default {
       },
       rules: {
         user: [
-          { required: true, message: this.$t('login.userError'), trigger: 'blur' },
+          { required: true, message: '用户名不存在', trigger: 'blur' },
         ],
         password: [
-          { required: true, message: this.$t('login.PWError'), trigger: 'blur' },
+          { required: true, message: '密码错误', trigger: 'blur' },
         ],
       },
       islogin: false,
@@ -122,7 +126,7 @@ export default {
     }
   },
   watch: {
-    userType (val) {
+    userType(val) {
       if (val === 'admin') {
         this.ruleForm.user = 'admin'
         this.ruleForm.password = 'admin'
@@ -132,16 +136,16 @@ export default {
         this.ruleForm.password = 'user'
       }
     },
-    'config.theme': function (val) {
+    'config.theme': function(val) {
       document.body.setAttribute('data-theme', val)
       this.$TOOL.data.set('APP_THEME', val)
     },
-    'config.lang': function (val) {
+    'config.lang': function(val) {
       this.$i18n.locale = val
       this.$TOOL.data.set('APP_LANG', val)
     },
   },
-  created () {
+  created() {
     this.$TOOL.data.remove('TOKEN')
     this.$TOOL.data.remove('USER_INFO')
     this.$TOOL.data.remove('MENU')
@@ -152,7 +156,7 @@ export default {
     // this.$store.commit('clearIframeList')
   },
   methods: {
-    async login () {
+    async login() {
       const validate = await this.$refs.loginForm.validate().catch(() => {})
       if (!validate) return false
 
@@ -202,10 +206,10 @@ export default {
       this.$message.success('登录成功')
       this.islogin = false
     },
-    configTheme () {
+    configTheme() {
       this.config.theme = this.config.theme === 'default' ? 'dark' : 'default'
     },
-    configLang (command) {
+    configLang(command) {
       this.config.lang = command.value
     },
   },
