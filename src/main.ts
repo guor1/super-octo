@@ -8,6 +8,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
+import type { AppContext } from './types'
 import App from './App.vue'
 
 // normalize.css
@@ -29,12 +30,12 @@ import 'uno.css'
     routes,
   })
 
-  const context = {
+  const context: AppContext<true> = {
     app,
     router,
   }
   // 安装插件
-  Object.values(import.meta.globEager('./plugins/*.js')).map(i => i.install?.(context))
+  Object.values(import.meta.globEager('./plugins/*.ts')).map(i => i.install?.(context))
 
   app.use(ElementPlus)
   app.use(router)
