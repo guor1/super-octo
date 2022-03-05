@@ -31,5 +31,5 @@ export type TimeRanger = [string, string]
 
 export interface GeneralChart {
   xAxis: string[]
-  data: Array<{ name: string; value: number[] }>;
+  data: Array<{ name: string; value: number[] }>
 }
