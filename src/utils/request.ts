@@ -1,19 +1,22 @@
+import type { AxiosRequestConfig } from 'axios'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { ElMessageBox, ElNotification } from 'element-plus'
 import sysConfig from '~/config'
-import tool from '~/utils/tool'
-import routes from '~pages'
+import { getToken } from '~/utils/auth'
 
 axios.defaults.baseURL = ''
-
 axios.defaults.timeout = sysConfig.TIMEOUT
 
 // HTTP request 拦截器
 axios.interceptors.request.use(
-  (config) => {
-    const token = tool.data.get('TOKEN')
-    if (token)
-      config.headers[sysConfig.TOKEN_NAME] = sysConfig.TOKEN_PREFIX + token
+  (config: AxiosRequestConfig) => {
+    const token = getToken()
+    if (token) {
+      config.headers = {
+        Authorization: sysConfig.TOKEN_PREFIX + token,
+      }
+    }
 
     if (!sysConfig.REQUEST_CACHE && config.method === 'get') {
       config.params = config.params || {}
@@ -53,7 +56,8 @@ axios.interceptors.response.use(
           center: true,
           confirmButtonText: '重新登录',
         }).then(() => {
-          routes.router.replace({ path: '/login' })
+          const router = useRouter()
+          router.replace({ path: '/login' })
         }).catch(() => {})
       }
       else {
@@ -76,12 +80,10 @@ axios.interceptors.response.use(
 
 const http = {
 
-  /** get 请求
-   * @param  {接口地址} url
-   * @param  {请求参数} params
-   * @param  {参数} config
+  /**
+   * get 请求
    */
-  get (url, params = {}, config = {}) {
+  get(url: string, params = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
@@ -96,12 +98,10 @@ const http = {
     })
   },
 
-  /** post 请求
-   * @param  {接口地址} url
-   * @param  {请求参数} data
-   * @param  {参数} config
+  /**
+   * post 请求
    */
-  post (url, data = {}, config = {}) {
+  post(url: string, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
@@ -116,12 +116,10 @@ const http = {
     })
   },
 
-  /** put 请求
-   * @param  {接口地址} url
-   * @param  {请求参数} data
-   * @param  {参数} config
+  /**
+   * put 请求
    */
-  put (url, data = {}, config = {}) {
+  put(url: string, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'put',
@@ -136,12 +134,10 @@ const http = {
     })
   },
 
-  /** patch 请求
-   * @param  {接口地址} url
-   * @param  {请求参数} data
-   * @param  {参数} config
+  /**
+   * patch 请求
    */
-  patch (url, data = {}, config = {}) {
+  patch(url: string, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'patch',
@@ -156,12 +152,10 @@ const http = {
     })
   },
 
-  /** delete 请求
-   * @param  {接口地址} url
-   * @param  {请求参数} data
-   * @param  {参数} config
+  /**
+   * delete 请求
    */
-  delete (url, data = {}, config = {}) {
+  delete(url: string, data = {}, config = {}) {
     return new Promise((resolve, reject) => {
       axios({
         method: 'delete',
@@ -177,29 +171,27 @@ const http = {
   },
 
   /** jsonp 请求
-   * @param  {接口地址} url
-   * @param  {JSONP回调函数名称} name
    */
-  jsonp (url, name = 'jsonp') {
-    return new Promise((resolve) => {
-      const script = document.createElement('script')
-      const _id = `jsonp${Math.ceil(Math.random() * 1000000)}`
-      script.id = _id
-      script.type = 'text/javascript'
-      script.src = url
-      window[name] = (response) => {
-        resolve(response)
-        document.getElementsByTagName('head')[0].removeChild(script)
-        try {
-          delete window[name]
-        }
-        catch (e) {
-          window[name] = undefined
-        }
-      }
-      document.getElementsByTagName('head')[0].appendChild(script)
-    })
-  },
+  // jsonp(url: string, name = 'jsonp') {
+  //   return new Promise((resolve) => {
+  //     const script = document.createElement('script')
+  //     const _id = `jsonp${Math.ceil(Math.random() * 1000000)}`
+  //     script.id = _id
+  //     script.type = 'text/javascript'
+  //     script.src = url
+  //     window[name] = (response) => {
+  //       resolve(response)
+  //       document.getElementsByTagName('head')[0].removeChild(script)
+  //       try {
+  //         delete window[name]
+  //       }
+  //       catch (e) {
+  //         window[name] = undefined
+  //       }
+  //     }
+  //     document.getElementsByTagName('head')[0].appendChild(script)
+  //   })
+  // },
 }
 
 export default http

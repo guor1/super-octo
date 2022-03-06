@@ -13,6 +13,7 @@
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
       "vite/client",
