@@ -39,12 +39,9 @@
       </div>
       <div class="aminui-body el-container">
         <Topbar v-if="!isMobile" />
-        <!-- <Tags v-if="!isMobile && layoutTags" /> -->
         <div id="adminui-main" class="adminui-main">
           <router-view v-slot="{ Component }">
-            <keep-alive :include="keepAliveStore.keepLiveRoute">
-              <component :is="Component" v-if="keepAliveStore.routeShow" :key="$route.fullPath" />
-            </keep-alive>
+            <component :is="Component" :key="$route.fullPath" />
           </router-view>
         </div>
       </div>
@@ -85,9 +82,7 @@
         <!-- <Tags v-if="!isMobile && layoutTags" /> -->
         <div id="adminui-main" class="adminui-main">
           <router-view v-slot="{ Component }">
-            <keep-alive :include="keepAliveStore.keepLiveRoute">
-              <component :is="Component" v-if="keepAliveStore.routeShow" :key="$route.fullPath" />
-            </keep-alive>
+            <component :is="Component" :key="$route.fullPath" />
           </router-view>
         </div>
       </div>
@@ -116,9 +111,7 @@
       <div class="aminui-body el-container">
         <div id="adminui-main" class="adminui-main">
           <router-view v-slot="{ Component }">
-            <keep-alive :include="keepAliveStore.keepLiveRoute">
-              <component :is="Component" v-if="keepAliveStore.routeShow" :key="$route.fullPath" />
-            </keep-alive>
+            <component :is="Component" :key="$route.fullPath" />
           </router-view>
         </div>
       </div>
@@ -131,7 +124,7 @@
       <div v-if="!isMobile" class="aminui-side-split">
         <div class="aminui-side-split-top">
           <router-link :to="$CONFIG.DASHBOARD_URL">
-            <img class="logo" :title="$CONFIG.APP_NAME" src="/img/logo-r.png" style="width: auto;">
+            <img class="w-auto h-30px" :title="$CONFIG.APP_NAME" src="/img/logo-r.png">
           </router-link>
         </div>
         <div class="adminui-side-split-scroll">
@@ -160,27 +153,32 @@
           </el-scrollbar>
         </div>
         <div class="adminui-side-bottom" @click="$store.commit('TOGGLE_menuIsCollapse')">
-          <el-icon>
-            <Icon v-if="menuIsCollapse" icon="ep-expand" />
-            <Icon v-else icon="ep-fold" />
-          </el-icon>
+          <ep-icon :icon="menuIsCollapse?'ep-expand':'ep-fold'" />
         </div>
       </div>
       <el-container class="aminui-body" direction="vertical">
-        <Topbar>
-          <userbar />
-        </Topbar>
+        <div class="adminui-topbar">
+          <div class="left-panel">
+            <el-breadcrumb>
+              <el-breadcrumb-item>
+                首页
+              </el-breadcrumb-item>
+              <el-breadcrumb-item>控制台</el-breadcrumb-item>
+            </el-breadcrumb>
+          </div>
+          <div class="center-panel" />
+          <div class="right-panel">
+            <userbar />
+          </div>
+        </div>
         <div id="adminui-main" class="adminui-main">
           <router-view v-slot="{ Component }">
-            <keep-alive :include="keepAliveStore.keepLiveRoute">
-              <component :is="Component" v-if="keepAliveStore.routeShow" :key="$route.fullPath" />
-            </keep-alive>
+            <component :is="Component" :key="$route.fullPath" />
           </router-view>
         </div>
       </el-container>
     </section>
   </template>
-  <div class="main-maximize-exit" @click="exitMaximize"><icon-carbon-close /></div>
 </template>
 
 <script>
@@ -188,7 +186,6 @@ import { Icon } from '@iconify/vue'
 import Topbar from './components/topbar.vue'
 import userbar from './components/userbar.vue'
 import { useSettingStore } from '~/stores/setting'
-import { useKeepAliveStore } from '~/stores/keepAlive'
 import userRoutes from '~/config/route'
 import routes from '~pages'
 
@@ -199,9 +196,8 @@ export default {
     Icon,
     userbar,
   },
-  setup () {
+  setup() {
     const settingStore = useSettingStore()
-    const keepAliveStore = useKeepAliveStore()
     const settingDialog = ref(false)
     const menu = ref(userRoutes)
     const nextMenu = ref([])
@@ -224,7 +220,6 @@ export default {
       layoutTags: computed(() => settingStore.layoutTags),
       menuIsCollapse: computed(() => settingStore.menuIsCollapse),
       settingStore,
-      keepAliveStore,
     }
   },
   // watch: {
@@ -259,14 +254,14 @@ export default {
     //   })
     // },
     // 点击显示
-    showMenu (route) {
+    showMenu(route) {
       this.pmenu = route
       this.nextMenu = this.filterUrl(route.children)
       if ((!route.children || route.children.length === 0) && route.component)
         routes.router.push({ path: route.path })
     },
     // 转换外部链接的路由
-    filterUrl (map) {
+    filterUrl(map) {
       const newMap = []
       map && map.forEach((item) => {
         item.meta = item.meta ? item.meta : {}
@@ -286,10 +281,13 @@ export default {
       })
       return newMap
     },
-    // 退出最大化
-    exitMaximize () {
-      document.getElementById('app').classList.remove('main-maximize')
-    },
   },
 }
 </script>
+<style scoped>
+.el-breadcrumb {margin-left: 15px;}
+.el-breadcrumb .el-breadcrumb__inner .icon {font-size: 14px;margin-right: 5px;float: left;}
+.breadcrumb-enter-active,.breadcrumb-leave-active {transition: all 0.3s;}
+.breadcrumb-enter-from,.breadcrumb-leave-active {opacity: 0;transform: translateX(20px);}
+.breadcrumb-leave-active {position: absolute;}
+</style>
