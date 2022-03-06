@@ -28,7 +28,7 @@
 <script setup>
 defineProps({ navMenus: Array })
 
-function hasChildren (item) {
+function hasChildren(item) {
   return item.children && !item.children.every(item => item.meta.hidden)
 }
 </script>

@@ -11,6 +11,7 @@ declare module 'vue' {
     EpButton: typeof import('./components/EpButton/index.vue')['default']
     EpIcon: typeof import('./components/EpIcon/index.vue')['default']
     IconCarbonClose: typeof import('~icons/carbon/close')['default']
+    IconEpMoreFilled: typeof import('~icons/ep/more-filled')['default']
     My: typeof import('./components/scFilterBar/my.vue')['default']
     NavMenu: typeof import('./components/NavMenu.vue')['default']
     NodeWrap: typeof import('./components/scWorkflow/nodeWrap.vue')['default']
