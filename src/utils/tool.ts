@@ -14,14 +14,13 @@ const tool = {
       return localStorage.setItem(key, _set)
     },
     get(key: string) {
-      let data = localStorage.getItem(key) as string
+      const data = localStorage.getItem(key) as string
       try {
-        data = JSON.parse(data)
+        return JSON.parse(data)
       }
       catch (err) {
         return null
       }
-      return data
     },
     remove(key: string) {
       return localStorage.removeItem(key)
