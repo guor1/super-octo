@@ -152,7 +152,7 @@
             </el-menu>
           </el-scrollbar>
         </div>
-        <div class="adminui-side-bottom" @click="$store.commit('TOGGLE_menuIsCollapse')">
+        <div class="adminui-side-bottom" @click="toggleCollapsed()">
           <ep-icon :icon="menuIsCollapse?'ep-expand':'ep-fold'" />
         </div>
       </div>
@@ -198,7 +198,6 @@ export default {
   },
   setup() {
     const settingStore = useSettingStore()
-    const settingDialog = ref(false)
     const menu = ref(userRoutes)
     const nextMenu = ref([])
     const pmenu = reactive({
@@ -209,17 +208,20 @@ export default {
     })
     const active = ref('')
 
+    const toggleCollapsed = () => {
+      settingStore.toggleCollapsed()
+    }
+
     return {
-      settingDialog,
       menu,
       nextMenu,
       pmenu,
       active,
-      isMobile: computed(() => settingStore.isMobile),
       layout: computed(() => settingStore.layout),
       layoutTags: computed(() => settingStore.layoutTags),
       menuIsCollapse: computed(() => settingStore.menuIsCollapse),
       settingStore,
+      toggleCollapsed,
     }
   },
   // watch: {
