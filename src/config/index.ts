@@ -26,9 +26,6 @@ const DEFAULT_CONFIG = {
   // 追加其他头
   HEADERS: {},
 
-  // 请求是否开启缓存
-  REQUEST_CACHE: false,
-
   // 布局 默认：default | 通栏：header | 经典：menu | 功能坞：dock
   // dock将关闭标签和面包屑栏
   LAYOUT: 'default',
