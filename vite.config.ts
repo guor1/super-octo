@@ -37,14 +37,12 @@ export default defineConfig({
       imports: [
         'pinia',
         'vue',
-        'vue/macros',
         'vue-router',
         '@vueuse/core',
         '@vueuse/head',
       ],
       dts: 'src/auto-imports.d.ts',
       resolvers: [ElementPlusResolver()],
-      vueTemplate: true,
     }),
 
     // https://github.com/antfu/vite-plugin-components
