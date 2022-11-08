@@ -2,13 +2,11 @@ import http from '~/utils/request'
 import { permission, rolePermission } from '~/utils/permission'
 import config from '~/config'
 import api from '~/api'
-import tool from '~/utils/tool'
 import type { UserModule } from '~/types'
 
 export const install: UserModule = ({ app }) => {
   // 挂载全局对象
   app.config.globalProperties.$CONFIG = config
-  app.config.globalProperties.$TOOL = tool
   app.config.globalProperties.$HTTP = http
   app.config.globalProperties.$API = api
   app.config.globalProperties.$AUTH = permission
