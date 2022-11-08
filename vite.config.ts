@@ -43,6 +43,7 @@ export default defineConfig({
       ],
       dts: 'src/auto-imports.d.ts',
       resolvers: [ElementPlusResolver()],
+      vueTemplate: true,
     }),
 
     // https://github.com/antfu/vite-plugin-components
