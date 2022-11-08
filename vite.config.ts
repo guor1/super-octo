@@ -1,6 +1,7 @@
 import path from 'path'
 import { defineConfig } from 'vite'
-import Vue from '@vitejs/plugin-vue'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import Icons from 'unplugin-icons/vite'
@@ -8,7 +9,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import Inspect from 'vite-plugin-inspect'
 import AutoImport from 'unplugin-auto-import/vite'
-// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { presetAttributify, presetIcons, presetUno } from 'unocss'
 import Unocss from 'unocss/vite'
 
@@ -19,7 +20,11 @@ export default defineConfig({
     },
   },
   plugins: [
-    Vue(),
+    vue({
+      reactivityTransform: true,
+    }),
+
+    vueJsx(),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),
@@ -30,13 +35,16 @@ export default defineConfig({
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
+        'pinia',
         'vue',
+        'vue/macros',
         'vue-router',
-        '@vueuse/head',
         '@vueuse/core',
+        '@vueuse/head',
       ],
       dts: 'src/auto-imports.d.ts',
-      // resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()],
+      vueTemplate: true,
     }),
 
     // https://github.com/antfu/vite-plugin-components
@@ -104,5 +112,13 @@ export default defineConfig({
     exclude: [
       'vue-demi',
     ],
+  },
+
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+      },
+    },
   },
 })
