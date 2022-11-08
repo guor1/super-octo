@@ -1,9 +1,8 @@
 import { defineStore } from 'pinia'
 import type { AppState } from './types'
-import defaultSettings from '~/config/settings.json'
 
 const useAppStore = defineStore('app', {
-  state: (): AppState => ({ ...defaultSettings }),
+  state: (): AppState => ({ theme: 'light' }),
 
   getters: {
     appCurrentSetting(state: AppState): AppState {
