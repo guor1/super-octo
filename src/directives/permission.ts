@@ -1,6 +1,9 @@
 import type { DirectiveBinding } from 'vue'
 import { useUserStore } from '~/stores'
 
+/**
+ * 权限控制，没有权限则从页面删除元素
+ */
 function checkPermission(el: HTMLElement, binding: DirectiveBinding) {
   const { value } = binding
   const userStore = useUserStore()

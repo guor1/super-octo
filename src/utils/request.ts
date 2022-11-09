@@ -4,12 +4,6 @@ import { ElNotification } from 'element-plus'
 import sysConfig from '~/config'
 import { getToken } from '~/utils/auth'
 
-export interface ResponseBody<T = any> {
-  code: number // 状态码0成功，-1报错提示
-  msg: string
-  data: T
-}
-
 // 创建实例
 const instance = axios.create({
   baseURL: import.meta.env.BASE_URL,
@@ -23,16 +17,13 @@ instance.interceptors.request.use((config: AxiosRequestConfig) => {
   if (token)
     config.headers!.Authorization = sysConfig.TOKEN_PREFIX + token
 
-  Object.assign(config.headers, sysConfig.HEADERS)
   return config
-},
-(error) => {
+}, (error) => {
   return Promise.reject(error)
-},
-)
+})
 
 // HTTP response 拦截器
-instance.interceptors.response.use((response: AxiosResponse<ResponseBody>) => {
+instance.interceptors.response.use((response: AxiosResponse) => {
   const res = response.data
   if (res.code === -1) {
     ElNotification.error({
@@ -44,7 +35,6 @@ instance.interceptors.response.use((response: AxiosResponse<ResponseBody>) => {
   return res
 }, (error) => {
   return Promise.reject(error.response)
-},
-)
+})
 
 export default instance

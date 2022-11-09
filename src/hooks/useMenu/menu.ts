@@ -4,7 +4,7 @@
 // routes 显示在左侧菜单中的路由(显示顺序在动态路由之前)
 // 示例如下
 
-const userRoutes = [
+const userMenu = [
   {
     name: 'home',
     path: '/home',
@@ -153,4 +153,5 @@ const userRoutes = [
   },
 ]
 
-export default userRoutes
+export default userMenu
+

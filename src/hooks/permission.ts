@@ -1,6 +1,9 @@
 import type { RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
 import { useUserStore } from '~/stores'
 
+/**
+ * 菜单权限校验，防止直接访问url
+ */
 export default function usePermission() {
   const userStore = useUserStore()
   return {

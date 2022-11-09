@@ -8,14 +8,15 @@ import usePermission from '~/hooks/permission'
 const dev = true
 
 export const install: UserModule = ({ router }) => {
-  router.beforeEach(async(to, from, next) => {
+  router.beforeEach(async (to, from, next) => {
     NProgress.start()
     if (dev)
       next()
     const userStore = useUserStore()
     async function crossroads() {
       const Permission = usePermission()
-      if (Permission.accessRouter(to)) await next()
+      if (Permission.accessRouter(to))
+        await next()
       else
         await next({ name: 'notFound' })
 

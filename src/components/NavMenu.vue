@@ -1,3 +1,11 @@
+<script setup>
+defineProps({ navMenus: Array })
+
+function hasChildren(item) {
+  return item.children && !item.children.every(item => item.meta.hidden)
+}
+</script>
+
 <template>
   <div v-if="navMenus.length <= 0" class="p-5">
     <el-alert title="无子集菜单" center type="info" :closable="false" />
@@ -24,11 +32,3 @@
     </el-sub-menu>
   </template>
 </template>
-
-<script setup>
-defineProps({ navMenus: Array })
-
-function hasChildren(item) {
-  return item.children && !item.children.every(item => item.meta.hidden)
-}
-</script>
