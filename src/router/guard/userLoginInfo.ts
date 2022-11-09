@@ -5,7 +5,7 @@ import { useUserStore } from '~/stores'
 import { isLogin } from '~/utils/auth'
 
 export default function setupUserLoginInfoGuard(router: Router) {
-  router.beforeEach(async(to, from, next) => {
+  router.beforeEach(async (to, from, next) => {
     NProgress.start()
     const userStore = useUserStore()
     if (isLogin()) {
