@@ -13,12 +13,13 @@ useHead({
 </script>
 
 <template>
-  <el-config-provider :button="{autoInsertSpace: false}" :locale="locale">
+  <el-config-provider :button="{ autoInsertSpace: false }" :locale="locale">
     <router-view />
   </el-config-provider>
 </template>
+
 <style lang="scss">
 @import '~/styles/style.scss';
 @import '~/styles/theme/dark.scss';
-@import '~/styles/element/index.scss';
+// @import '~/styles/element/index.scss';
 </style>

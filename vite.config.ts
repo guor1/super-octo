@@ -55,7 +55,7 @@ export default defineConfig({
           prefix: 'icon',
           enabledCollections: ['carbon', 'ep', 'logos'],
         }),
-        // ElementPlusResolver(),
+        ElementPlusResolver(),
       ],
       dts: 'src/components.d.ts',
     }),
