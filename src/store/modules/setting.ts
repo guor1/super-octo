@@ -10,16 +10,10 @@ export const useSettingStore = defineStore('setting', () => {
   const isMobile = ref(false)
   // 布局
   const layout = ref(config.LAYOUT)
-  // 菜单是否折叠 toggle
-  const menuIsCollapse = ref(config.MENU_IS_COLLAPSE)
   // 多标签栏
   const layoutTags = ref(config.LAYOUT_TAGS)
   // 主题
   const theme = ref(config.THEME)
-
-  function toggleCollapsed() {
-    menuIsCollapse.value = !menuIsCollapse.value
-  }
 
   return {
     navMode,
@@ -28,9 +22,7 @@ export const useSettingStore = defineStore('setting', () => {
     pageAnimateType,
     isMobile,
     layout,
-    menuIsCollapse,
     layoutTags,
     theme,
-    toggleCollapsed,
   }
 })
