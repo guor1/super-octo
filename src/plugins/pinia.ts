@@ -1,7 +1,8 @@
-import store from '~/stores'
+import { createPinia } from 'pinia'
 import type { UserModule } from '~/types'
 
 // 挂载状态管理
 export const install: UserModule = ({ app }) => {
-  app.use(store)
+  const pinia = createPinia()
+  app.use(pinia)
 }
