@@ -1,0 +1,105 @@
+export const menus = [
+  {
+    path: '/report',
+    title: '报表统计',
+    icon: 'icon-bar-chart',
+    children: [
+      { path: '/report/sale_report', title: '销售报表' },
+      { path: '/report/purchase_report', title: '采购报表' },
+      { path: '/report/stock_report', title: '库存报表' },
+      { path: '/report/income_expense_statistics', title: '收支统计' },
+      { path: '/report/batch_report', title: '批次报表' },
+    ],
+  },
+  {
+    path: '/basicData',
+    title: '基础数据',
+    icon: 'ic-icon-park-outline:data',
+    children: [
+      { path: '/basicData/client', title: '客户管理' },
+      { path: '/basicData/supplier', title: '供应商管理' },
+      { path: '/basicData/warehouse', title: '仓库管理' },
+      { path: '/basicData/settlement_account', title: '结算账户' },
+      { path: '/basicData/revenue_expenditure_items', title: '收支项目' },
+    ],
+  },
+  {
+    path: '/goods',
+    title: '产品管理',
+    icon: 'ic-icon-park-outline:commodity',
+    children: [
+      { path: '/goods/classification', title: '产品分类' },
+      { path: '/goods/unit', title: '产品单位' },
+      { path: '/goods/information', title: '产品信息' },
+      { path: '/goods/temporary_warning', title: '临期预警' },
+    ],
+  },
+  {
+    path: '/purchasing',
+    title: '采购管理',
+    icon: 'ic-icon-park-outline:buy',
+    children: [
+      { path: '/purchasing/purchase_create', title: '采购开单' },
+      { path: '/purchasing/purchase_record', title: '采购记录' },
+      { path: '/purchasing/purchase_return_create', title: '采购退货' },
+      { path: '/purchasing/return_record', title: '退货记录' },
+    ],
+  },
+  {
+    path: '/sale',
+    title: '销售管理',
+    icon: 'ic-icon-park-outline:sales-report',
+    children: [
+      { path: '/sale/sale_create', title: '销售开单' },
+      { path: '/sale/sale_record', title: '销售记录' },
+      { path: '/sale/sale_return_create', title: '销售退货' },
+      { path: '/sale/sale_return_record', title: '退货记录' },
+    ],
+  },
+  {
+    path: '/production',
+    title: '生产管理',
+    icon: 'ic-icon-park-outline:schedule',
+    children: [
+      { path: '/production/plan', title: '生产计划' },
+      { path: '/production/task', title: '生产任务' },
+      { path: '/production/record', title: '生产记录' },
+    ],
+  },
+  {
+    path: '/warehouse',
+    title: '库存管理',
+    icon: 'database',
+    children: [
+      { path: '/warehouse/inStock', title: '入库任务' },
+      { path: '/warehouse/outStock', title: '出库任务' },
+      { path: '/warehouse/inventory', title: '盘点' },
+      { path: '/warehouse/allocation', title: '调拨' },
+      { path: '/warehouse/flow', title: '库存流水' },
+    ],
+  },
+  {
+    path: '/finance',
+    title: '财务管理',
+    icon: 'ic-icon-park-outline:currency',
+    children: [
+      { path: '/finance/arrears_payable', title: '应付欠款' },
+      { path: '/finance/payment', title: '付款' },
+      { path: '/finance/arrears_receivable', title: '应收欠款' },
+      { path: '/finance/collection', title: '收款' },
+      { path: '/finance/account_transfer', title: '账户转账' },
+      { path: '/finance/income_and_pay', title: '日常收支' },
+      { path: '/finance/flow', title: '资金流水' },
+    ],
+  },
+  {
+    path: '/ums',
+    title: '系统管理',
+    icon: 'icon-settings',
+    children: [
+      { path: '/role', title: '角色管理' },
+      { path: '/account', title: '员工账号' },
+      { path: '/config', title: '系统配置' },
+    ],
+  },
+]

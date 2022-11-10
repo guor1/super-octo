@@ -1,48 +1,24 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import useMenu from '~/config/menus'
-import routes from '~pages'
+import { menus } from '~/config/menus'
+import type { AppMenuRecordRaw } from '~/types'
 
 // 一级导航
-const side = ref('')
-const menu = useMenu()
-const nextMenu = ref([])
-const pmenu = reactive({
-  title: 'aaa',
-  meta: {
-    title: 'asdas',
-  },
-})
-const active = ref('')
+const menuRef = ref<AppMenuRecordRaw[]>(menus)
+const subMenuRef = ref<AppMenuRecordRaw[]>()
+const activeNavMenu = ref('')
 
-// 点击显示
-const showMenu = () => {
-  this.pmenu = route
-  this.nextMenu = this.filterUrl(route.children)
-  if ((!route.children || route.children.length === 0) && route.component)
-    routes.router.push({ path: route.path })
+const isActiveNavMenu = (menuItem: AppMenuRecordRaw) => {
+  return unref(activeNavMenu) === menuItem.path
 }
 
-// 转换外部链接的路由
-const filterUrl = (map) => {
-  const newMap = []
-  map && map.forEach((item) => {
-    item.meta = item.meta ? item.meta : {}
-    // 处理隐藏
-    if (item.meta.hidden)
-      return false
+function handleNavClick(menuItem: AppMenuRecordRaw) {
+  activeNavMenu.value = menuItem.path
+  subMenuRef.value = menuItem.children
+}
 
-    // 处理http
-    if (item.meta.type === 'iframe')
-      item.path = `/i/${item.name}`
-
-    // 递归循环
-    if (item.children && item.children.length > 0)
-      item.children = this.filterUrl(item.children)
-
-    newMap.push(item)
-  })
-  return newMap
+const menuIsCollapse = ref(false)
+const toggleCollapsed = () => {
 }
 </script>
 
@@ -50,30 +26,29 @@ const filterUrl = (map) => {
   <section class="aminui-wrapper">
     <div class="aminui-side-split">
       <div class="aminui-side-split-top">
-        <img class="w-auto h-30px" :title="$CONFIG.APP_NAME" src="/img/logo-r.png">
+        <img class="w-auto h-30px" src="/img/logo-r.png">
       </div>
       <div class="adminui-side-split-scroll">
         <el-scrollbar>
           <ul>
-            <li
-              v-for="item in menu" :key="item" :class="pmenu.path === item.path ? 'active' : ''"
-              @click="showMenu(item)"
-            >
-              <el-icon><Icon :icon="item.meta.icon || menu" /></el-icon>
-              <p>{{ item.meta.title }}</p>
+            <li v-for="item in menuRef" :key="item.path" :class="isActiveNavMenu(item) ? 'active' : ''" @click="handleNavClick(item)">
+              <el-icon v-if="item.icon">
+                <Icon :icon="item.icon" />
+              </el-icon>
+              <p>{{ item.title }}</p>
             </li>
           </ul>
         </el-scrollbar>
       </div>
     </div>
-    <div v-if="nextMenu.length > 0 || !pmenu.component" :class="menuIsCollapse ? 'aminui-side isCollapse' : 'aminui-side'">
+    <div :class="menuIsCollapse ? 'aminui-side isCollapse' : 'aminui-side'">
       <div v-if="!menuIsCollapse" class="adminui-side-top">
-        <h2>{{ pmenu.meta.title }}</h2>
+        <h2>测试</h2>
       </div>
       <div class="adminui-side-scroll">
         <el-scrollbar>
-          <el-menu :default-active="active" router :collapse="menuIsCollapse" :unique-opened="$CONFIG.MENU_UNIQUE_OPENED">
-            <NavMenu :nav-menus="nextMenu" />
+          <el-menu router :collapse="menuIsCollapse">
+            <NavMenu :nav-menus="subMenuRef" />
           </el-menu>
         </el-scrollbar>
       </div>
