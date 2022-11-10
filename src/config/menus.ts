@@ -102,9 +102,9 @@ export const menus = [
     title: '系统管理',
     icon: 'ic-icon-park-outline:setting',
     children: [
-      { path: '/role', title: '角色管理' },
-      { path: '/account', title: '员工账号' },
-      { path: '/config', title: '系统配置' },
+      { path: '/ums/role', title: '角色管理' },
+      { path: '/ums/user', title: '员工账号' },
+      { path: '/ums/config', title: '系统配置' },
     ],
   },
 ]

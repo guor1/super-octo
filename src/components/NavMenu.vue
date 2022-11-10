@@ -7,6 +7,9 @@ defineProps({ navMenus: Array<AppMenuRecordRaw> })
 function hasChildren(menuItem: AppMenuRecordRaw) {
   return menuItem.children
 }
+
+onMounted(() => {
+})
 </script>
 
 <template>

@@ -2,6 +2,7 @@
 import { menus } from '~/config/menus'
 import type { AppMenuRecordRaw } from '~/types'
 import { useAppStore } from '~/store'
+import { useMenu } from '~/hooks/useMenu'
 
 // 导航菜单
 const menuRef = ref<AppMenuRecordRaw[]>(menus)
@@ -15,6 +16,7 @@ const isActiveNavMenu = (menuItem: AppMenuRecordRaw) => {
 }
 
 const router = useRouter()
+const route = useRoute()
 // 切换导航事件
 function handleNavClick(menuItem: AppMenuRecordRaw) {
   activeNavMenu.value = menuItem.path
@@ -28,12 +30,28 @@ function handleNavClick(menuItem: AppMenuRecordRaw) {
   }
 }
 
-const { menuIsCollapse, toggleCollapsed } = useAppStore()
+const appStore = useAppStore()
+const { menuIsCollapse } = storeToRefs(appStore)
+const { toggleCollapsed } = appStore
 
+const activeMenu = ref('')
 onMounted(() => {
-  menus.forEach((item) => {
-
-  })
+  const loc = route.path
+  for (const item of menus) {
+    if (!item.children) {
+      if (item.path === loc) {
+        handleNavClick(item)
+        break
+      }
+    }
+    else {
+      const accessItem = item.children.find(subItem => subItem.path === loc)
+      if (accessItem) {
+        handleNavClick(item)
+        activeMenu.value = accessItem.path
+      }
+    }
+  }
 })
 </script>
 
@@ -60,13 +78,13 @@ onMounted(() => {
       </div>
       <div class="adminui-side-scroll">
         <el-scrollbar>
-          <el-menu router :collapse="menuIsCollapse">
+          <el-menu router :collapse="menuIsCollapse" :default-active="activeMenu">
             <NavMenu :nav-menus="subMenuRef" />
           </el-menu>
         </el-scrollbar>
       </div>
       <div class="adminui-side-bottom" @click="toggleCollapsed()">
-        <ep-icon :icon="menuIsCollapse ? 'ic-ep-expand' : 'ic-ep-fold'" />
+        <ep-icon :icon="menuIsCollapse ? 'ic-ep:expand' : 'ic-ep:fold'" />
       </div>
     </div>
     <el-container class="aminui-body" direction="vertical">
