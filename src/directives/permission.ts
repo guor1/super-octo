@@ -1,5 +1,5 @@
 import type { DirectiveBinding } from 'vue'
-import useUserStore from '~/store/modules/user'
+import { useUserStore } from '~/store'
 
 /**
  * 权限控制，没有权限则从页面删除元素

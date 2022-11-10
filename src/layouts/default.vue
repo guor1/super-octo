@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { menus } from '~/config/menus'
 import type { AppMenuRecordRaw } from '~/types'
+import { useAppStore } from '~/store'
 
 // 导航菜单
 const menuRef = ref<AppMenuRecordRaw[]>(menus)
@@ -27,10 +28,7 @@ function handleNavClick(menuItem: AppMenuRecordRaw) {
   }
 }
 
-const menuIsCollapse = ref(false)
-const toggleCollapsed = () => {
-  menuIsCollapse.value = !unref(menuIsCollapse)
-}
+const { menuIsCollapse, toggleCollapsed } = useAppStore()
 
 onMounted(() => {
   menus.forEach((item) => {
