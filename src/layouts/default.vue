@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { menus } from '~/config/menus'
 import type { AppMenuRecordRaw } from '~/types'
 
@@ -32,9 +31,7 @@ const toggleCollapsed = () => {
         <el-scrollbar>
           <ul>
             <li v-for="item in menuRef" :key="item.path" :class="isActiveNavMenu(item) ? 'active' : ''" @click="handleNavClick(item)">
-              <el-icon v-if="item.icon">
-                <Icon :icon="item.icon" />
-              </el-icon>
+              <ep-icon v-if="item.icon" :icon="item.icon" />
               <p>{{ item.title }}</p>
             </li>
           </ul>

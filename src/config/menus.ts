@@ -2,7 +2,7 @@ export const menus = [
   {
     path: '/report',
     title: '报表统计',
-    icon: 'icon-bar-chart',
+    icon: 'ic-icon-park-outline:chart-line',
     children: [
       { path: '/report/sale_report', title: '销售报表' },
       { path: '/report/purchase_report', title: '采购报表' },
@@ -95,7 +95,7 @@ export const menus = [
   {
     path: '/ums',
     title: '系统管理',
-    icon: 'icon-settings',
+    icon: 'ic-icon-park-outline:setting',
     children: [
       { path: '/role', title: '角色管理' },
       { path: '/account', title: '员工账号' },
