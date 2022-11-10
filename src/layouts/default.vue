@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import useMenu from '~/hooks/useMenu'
+import useMenu from '~/config/menus'
 import routes from '~pages'
 
 // 一级导航
