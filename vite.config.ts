@@ -42,6 +42,9 @@ export default defineConfig({
         '@vueuse/head',
       ],
       dts: 'src/auto-imports.d.ts',
+      dirs: [
+        'src/hooks',
+      ],
       resolvers: [ElementPlusResolver()],
       vueTemplate: true,
     }),
