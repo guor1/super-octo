@@ -17,6 +17,7 @@
     "pinia": "^2.0.23",
     "query-string": "^7.1.1",
     "sortablejs": "1.15.0",
+    "vform3-builds": "^3.0.9",
     "vite-ssg": "^0.21.2",
     "vue": "^3.2.41",
     "vue-demi": "^0.13.11",

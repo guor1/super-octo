@@ -7,3 +7,4 @@ declare module '*.vue' {
 
 declare module 'makeit-captcha'
 declare module 'nprogress'
+declare module 'vform3-builds'
