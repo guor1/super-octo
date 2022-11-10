@@ -1,9 +1,18 @@
 <script setup lang="ts">
-const { menuRef, subMenuRef, activeMenuRef, isActiveNavMenu, handleNavClick, checkRouteAccess } = useMenu()
+import breadcrumb from './components/breadcrumb.vue'
+import { useAppStore } from '~/store/modules/appStore'
+
+const appStore = useAppStore()
+const { menuRef, subMenuRef, activeMenuRef } = storeToRefs(appStore)
+const { isActiveNavMenu, handleNavClick, checkRouteAccess } = appStore
 const { menuIsCollapse, toggleCollapsed } = useSetting()
 
+const route = useRoute()
 onMounted(() => {
-  const route = useRoute()
+  checkRouteAccess(route.path)
+})
+
+watch(() => route.path, () => {
   checkRouteAccess(route.path)
 })
 </script>
@@ -43,12 +52,7 @@ onMounted(() => {
     <el-container class="aminui-body" direction="vertical">
       <div class="adminui-topbar">
         <div class="left-panel">
-          <el-breadcrumb>
-            <el-breadcrumb-item>
-              首页
-            </el-breadcrumb-item>
-            <el-breadcrumb-item>控制台</el-breadcrumb-item>
-          </el-breadcrumb>
+          <breadcrumb />
         </div>
         <div class="center-panel" />
         <div class="right-panel">
