@@ -13,10 +13,18 @@ const isActiveNavMenu = (menuItem: AppMenuRecordRaw) => {
   return unref(activeNavMenu) === menuItem.path
 }
 
+const router = useRouter()
 // 切换导航事件
 function handleNavClick(menuItem: AppMenuRecordRaw) {
   activeNavMenu.value = menuItem.path
-  subMenuRef.value = menuItem.children
+
+  if (menuItem.children) {
+    subMenuRef.value = menuItem.children
+  }
+  else {
+    subMenuRef.value = []
+    router.push(menuItem.path)
+  }
 }
 
 const menuIsCollapse = ref(false)
@@ -25,7 +33,9 @@ const toggleCollapsed = () => {
 }
 
 onMounted(() => {
+  menus.forEach((item) => {
 
+  })
 })
 </script>
 
@@ -46,7 +56,7 @@ onMounted(() => {
         </el-scrollbar>
       </div>
     </div>
-    <div :class="menuIsCollapse ? 'aminui-side isCollapse' : 'aminui-side'">
+    <div v-if="subMenuRef && subMenuRef.length > 0" :class="menuIsCollapse ? 'aminui-side isCollapse' : 'aminui-side'">
       <div v-if="!menuIsCollapse" class="adminui-side-top">
         <h2>测试</h2>
       </div>

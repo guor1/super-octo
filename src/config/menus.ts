@@ -1,5 +1,10 @@
 export const menus = [
   {
+    path: '/hi/admin',
+    title: '一级页面',
+    icon: 'ic-icon-park-outline:chart-line',
+  },
+  {
     path: '/report',
     title: '报表统计',
     icon: 'ic-icon-park-outline:chart-line',
