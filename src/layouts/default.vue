@@ -2,15 +2,18 @@
 import { menus } from '~/config/menus'
 import type { AppMenuRecordRaw } from '~/types'
 
-// 一级导航
+// 导航菜单
 const menuRef = ref<AppMenuRecordRaw[]>(menus)
+// 子菜单
 const subMenuRef = ref<AppMenuRecordRaw[]>()
+// 活动的导航
 const activeNavMenu = ref('')
 
 const isActiveNavMenu = (menuItem: AppMenuRecordRaw) => {
   return unref(activeNavMenu) === menuItem.path
 }
 
+// 切换导航事件
 function handleNavClick(menuItem: AppMenuRecordRaw) {
   activeNavMenu.value = menuItem.path
   subMenuRef.value = menuItem.children
@@ -18,13 +21,18 @@ function handleNavClick(menuItem: AppMenuRecordRaw) {
 
 const menuIsCollapse = ref(false)
 const toggleCollapsed = () => {
+  menuIsCollapse.value = !unref(menuIsCollapse)
 }
+
+onMounted(() => {
+
+})
 </script>
 
 <template>
   <section class="aminui-wrapper">
     <div class="aminui-side-split">
-      <div class="aminui-side-split-top">
+      <div class="aminui-side-split-top flex justify-center items-center">
         <img class="w-auto h-30px" src="/img/logo-r.png">
       </div>
       <div class="adminui-side-split-scroll">
@@ -50,7 +58,7 @@ const toggleCollapsed = () => {
         </el-scrollbar>
       </div>
       <div class="adminui-side-bottom" @click="toggleCollapsed()">
-        <ep-icon :icon="menuIsCollapse ? 'ep-expand' : 'ep-fold'" />
+        <ep-icon :icon="menuIsCollapse ? 'ic-ep-expand' : 'ic-ep-fold'" />
       </div>
     </div>
     <el-container class="aminui-body" direction="vertical">
