@@ -1,57 +1,10 @@
 <script setup lang="ts">
-import { menus } from '~/config/menus'
-import type { AppMenuRecordRaw } from '~/types'
-import { useAppStore } from '~/store'
-import { useMenu } from '~/hooks/useMenu'
+const { menuRef, subMenuRef, activeMenuRef, isActiveNavMenu, handleNavClick, checkRouteAccess } = useMenu()
+const { menuIsCollapse, toggleCollapsed } = useSetting()
 
-// 导航菜单
-const menuRef = ref<AppMenuRecordRaw[]>(menus)
-// 子菜单
-const subMenuRef = ref<AppMenuRecordRaw[]>()
-// 活动的导航
-const activeNavMenu = ref('')
-
-const isActiveNavMenu = (menuItem: AppMenuRecordRaw) => {
-  return unref(activeNavMenu) === menuItem.path
-}
-
-const router = useRouter()
-const route = useRoute()
-// 切换导航事件
-function handleNavClick(menuItem: AppMenuRecordRaw) {
-  activeNavMenu.value = menuItem.path
-
-  if (menuItem.children) {
-    subMenuRef.value = menuItem.children
-  }
-  else {
-    subMenuRef.value = []
-    router.push(menuItem.path)
-  }
-}
-
-const appStore = useAppStore()
-const { menuIsCollapse } = storeToRefs(appStore)
-const { toggleCollapsed } = appStore
-
-const activeMenu = ref('')
 onMounted(() => {
-  const loc = route.path
-  for (const item of menus) {
-    if (!item.children) {
-      if (item.path === loc) {
-        handleNavClick(item)
-        break
-      }
-    }
-    else {
-      const accessItem = item.children.find(subItem => subItem.path === loc)
-      if (accessItem) {
-        handleNavClick(item)
-        activeMenu.value = accessItem.path
-      }
-    }
-  }
+  const route = useRoute()
+  checkRouteAccess(route.path)
 })
 </script>
 
@@ -78,7 +31,7 @@ onMounted(() => {
       </div>
       <div class="adminui-side-scroll">
         <el-scrollbar>
-          <el-menu router :collapse="menuIsCollapse" :default-active="activeMenu">
+          <el-menu router :collapse="menuIsCollapse" :default-active="activeMenuRef">
             <NavMenu :nav-menus="subMenuRef" />
           </el-menu>
         </el-scrollbar>

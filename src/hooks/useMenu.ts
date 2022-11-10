@@ -6,8 +6,9 @@ export function useMenu() {
   const menuRef = ref<AppMenuRecordRaw[]>(menus)
   // 子菜单
   const subMenuRef = ref<AppMenuRecordRaw[]>()
-  // 活动的导航
-  const activeNavMenu = ref('')
+  // 激活的导航
+  const activeNavMenu = ref()
+  const activeMenuRef = ref()
 
   const isActiveNavMenu = (menuItem: AppMenuRecordRaw) => {
     return unref(activeNavMenu) === menuItem.path
@@ -27,7 +28,22 @@ export function useMenu() {
     }
   }
 
+  function checkRouteAccess(path: string) {
+    for (const item of menus) {
+      if (!item.children && item.path === path) {
+        handleNavClick(item)
+        break
+      }
+      const accessItem = item.children?.find(subItem => subItem.path === path)
+      if (accessItem) {
+        handleNavClick(item)
+        activeMenuRef.value = accessItem.path
+        break
+      }
+    }
+  }
+
   return {
-    menuRef, subMenuRef, activeNavMenu, isActiveNavMenu, handleNavClick,
+    menuRef, subMenuRef, activeMenuRef, isActiveNavMenu, handleNavClick, checkRouteAccess,
   }
 }
