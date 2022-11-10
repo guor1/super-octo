@@ -91,12 +91,11 @@ export default defineConfig({
   ],
 
   server: {
-    open: false, // 运行后自动打开浏览器
+    open: true, // 运行后自动打开浏览器
     proxy: {
       '/api': {
-        target: 'https://www.fastmock.site/mock/5039c4361c39a7e3252c5b55971f1bd3/api',
+        target: 'https://www.fastmock.site/mock/327a2d6445afb8850019ba8f5d5f7686',
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, ''),
       },
     },
     fs: {

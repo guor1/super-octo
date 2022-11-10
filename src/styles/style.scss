@@ -6,3 +6,22 @@
 :root {
     $--el-border-radius-base: 0px;
 }
+
+.layout-content {
+    padding: 11px 11px 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100% - 40px);
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    background-color: var(--color-bg-1);
+    border-radius: 4px;
+}

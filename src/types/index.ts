@@ -18,3 +18,9 @@ export interface AppMenuRecordRaw {
   icon?: string // 图标
   children?: AppMenuRecordRaw[] // 子菜单
 }
+
+export interface Pagination {
+  current: number
+  pageSize: number
+  total: number
+}
