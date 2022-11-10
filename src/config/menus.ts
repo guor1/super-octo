@@ -1,7 +1,7 @@
 export const menus = [
   {
-    path: '/hi/admin',
-    title: '一级页面',
+    path: '/vform3',
+    title: '表单',
     icon: 'ic-icon-park-outline:chart-line',
   },
   {
