@@ -1,10 +1,13 @@
 import { defineStore } from 'pinia'
-import { menus } from '~/config/menus'
+import { getMenuList } from '~/api/ums/user'
 import type { AppMenuRecordRaw } from '~/types'
 
 export const useAppStore = defineStore('appStore', () => {
   // 导航菜单
-  const menuRef = ref<AppMenuRecordRaw[]>(menus)
+  const menuRef = ref<AppMenuRecordRaw[]>([])
+  getMenuList().then(({ data }) => {
+    menuRef.value = data
+  })
   // 子菜单
   const subMenuRef = ref<AppMenuRecordRaw[]>()
   // 激活的导航
@@ -30,8 +33,8 @@ export const useAppStore = defineStore('appStore', () => {
     }
   }
 
-  function checkRouteAccess(path: string) {
-    for (const item of menus) {
+  async function checkRouteAccess(path: string) {
+    for (const item of menuRef.value) {
       if (!item.children && item.path === path) {
         handleNavClick(item)
         activeMenuRef.value = null
