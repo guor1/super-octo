@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import breadcrumb from './components/breadcrumb.vue'
+import Breadcrumb from './components/Breadcrumb.vue'
+import NavMenu from './components/NavMenu.vue'
 import { useAppStore } from '~/store/modules/appStore'
 
 const appStore = useAppStore()
@@ -18,9 +19,9 @@ watch(() => route.path, () => {
 </script>
 
 <template>
-  <section class="aminui-wrapper">
-    <div class="aminui-side-split">
-      <div class="aminui-side-split-top flex justify-center items-center">
+  <section class="flex flex-1">
+    <div class="aminui-side-split bg-[#222b45]">
+      <div class="flex justify-center items-center h-49px">
         <img class="w-auto h-30px" src="/img/logo-r.png">
       </div>
       <div class="adminui-side-split-scroll">
@@ -51,13 +52,11 @@ watch(() => route.path, () => {
     </div>
     <el-container class="aminui-body" direction="vertical">
       <div class="adminui-topbar">
-        <div class="left-panel">
-          <breadcrumb />
+        <div class="flex items-center">
+          <Breadcrumb class="ml-15px" />
         </div>
         <div class="center-panel" />
-        <div class="right-panel">
-          <!-- <Userbar /> -->
-        </div>
+        <div class="flex items-center" />
       </div>
       <div id="adminui-main" class="adminui-main">
         <router-view v-slot="{ Component }">
@@ -67,11 +66,3 @@ watch(() => route.path, () => {
     </el-container>
   </section>
 </template>
-
-<style scoped>
-.el-breadcrumb {margin-left: 15px;}
-.el-breadcrumb .el-breadcrumb__inner .icon {font-size: 14px;margin-right: 5px;float: left;}
-.breadcrumb-enter-active,.breadcrumb-leave-active {transition: all 0.3s;}
-.breadcrumb-enter-from,.breadcrumb-leave-active {opacity: 0;transform: translateX(20px);}
-.breadcrumb-leave-active {position: absolute;}
-</style>

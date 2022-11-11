@@ -36,10 +36,6 @@ const searchTableData = () => {
   pagination.current = 1
   fetchTableData()
 }
-const onPageChange = (current: number) => {
-  pagination.current = current
-  fetchTableData()
-}
 
 onMounted(() => {
   fetchTableData()
@@ -70,18 +66,14 @@ onMounted(() => {
             新增
           </el-button>
         </el-space>
-        <el-table
-          row-key="id"
-          border
-          :data="tableData"
-        >
+        <el-table row-key="id" :data="tableData">
           <el-table-column prop="id" label="编号" width="180" />
           <el-table-column prop="username" label="用户名" width="180" />
           <el-table-column prop="name" label="姓名" />
           <el-table-column prop="phone" label="手机号" />
           <el-table-column prop="is_active" label="状态" />
         </el-table>
-        <el-pagination background layout="prev, pager, next" :total="1000" />
+        <el-pagination background layout="prev, pager, next" :total="1000" class="justify-end mt-16px mb-16px" />
       </el-card>
     </el-space>
   </div>
