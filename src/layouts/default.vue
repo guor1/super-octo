@@ -26,7 +26,7 @@ watch(() => route.path, () => {
       </div>
       <div class="adminui-side-split-scroll">
         <el-scrollbar>
-          <ul>
+          <ul class="pl-5px pr-5px">
             <li v-for="item in menuRef" :key="item.path" :class="isActiveNavMenu(item) ? 'active' : ''" @click="handleNavClick(item)">
               <ep-icon v-if="item.icon" :icon="item.icon" />
               <p>{{ item.title }}</p>

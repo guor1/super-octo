@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { FormInstance } from 'element-plus'
 import logoImage from '~/assets/image/logo.png'
+import { useUserStore } from '~/store/modules/userStore'
 
 const generateFormModel = () => {
   return {
@@ -11,7 +12,12 @@ const generateFormModel = () => {
 }
 const formModel = ref(generateFormModel())
 
+const router = useRouter()
+const { handleLogin } = useUserStore()
 const handleSubmit = async (formEl: FormInstance | undefined) => {
+  handleLogin(formModel.value).then(() => {
+    router.push({ path: '/' })
+  })
 }
 </script>
 
@@ -24,7 +30,7 @@ const handleSubmit = async (formEl: FormInstance | undefined) => {
           <div class="login-title">
             进销存管理系统
           </div>
-          <el-form ref="loginForm" :model="formModel" layout="vertical" @submit="handleSubmit">
+          <el-form ref="loginForm" :model="formModel" layout="vertical">
             <el-form-item field="username" hide-label required>
               <el-input v-model="formModel.username" size="large" placeholder="用户名" />
             </el-form-item>
@@ -38,7 +44,7 @@ const handleSubmit = async (formEl: FormInstance | undefined) => {
                 </el-checkbox>
                 <el-link>忘记密码</el-link>
               </div>
-              <el-button type="primary" html-type="submit" class="w-full">
+              <el-button type="primary" class="w-full" @click="handleSubmit">
                 登录
               </el-button>
             </el-space>
