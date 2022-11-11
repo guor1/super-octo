@@ -35,7 +35,6 @@ declare module '@vue/runtime-core' {
     EpButton: typeof import('./components/EpButton/index.vue')['default']
     EpIcon: typeof import('./components/EpIcon/index.vue')['default']
     My: typeof import('./components/scFilterBar/my.vue')['default']
-    NavMenu: typeof import('./components/NavMenu.vue')['default']
     NodeWrap: typeof import('./components/scWorkflow/nodeWrap.vue')['default']
     Promoter: typeof import('./components/scWorkflow/nodes/promoter.vue')['default']
     PySelect: typeof import('./components/scFilterBar/pySelect.vue')['default']

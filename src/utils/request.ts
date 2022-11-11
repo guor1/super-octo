@@ -2,7 +2,7 @@ import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
 import { ElNotification } from 'element-plus'
 import sysConfig from '~/config'
-import { getToken } from '~/utils/auth'
+import { useUserStore } from '~/store/modules/userStore'
 
 // 创建实例
 const instance = axios.create({
@@ -13,7 +13,8 @@ const instance = axios.create({
 
 // HTTP request 拦截器
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
-  const token = getToken()
+  const { userState } = useUserStore()
+  const token = userState.token
   if (token)
     config.headers!.Authorization = sysConfig.TOKEN_PREFIX + token
 

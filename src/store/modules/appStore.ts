@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { getMenuList } from '~/api/ums/user'
+import { getMenuList } from '~/api/ums/menu'
 import type { AppMenuRecordRaw } from '~/types'
 
 export const useAppStore = defineStore('appStore', () => {

@@ -12,5 +12,5 @@ export interface LoginReq {
 }
 
 export interface LoginRes {
-  token: string
+  tokenValue: string
 }
