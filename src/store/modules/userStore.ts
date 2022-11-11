@@ -24,7 +24,7 @@ export const useUserStore = defineStore('userStore', () => {
   }
 
   function needFetchUserInfo() {
-    return true
+    return userState.userInfo === null
   }
 
   function fetchUserInfo() {
