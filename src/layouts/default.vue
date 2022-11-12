@@ -5,17 +5,8 @@ import { useAppStore } from '~/store/modules/appStore'
 
 const appStore = useAppStore()
 const { menuRef, subMenuRef, activeMenuRef } = storeToRefs(appStore)
-const { isActiveNavMenu, handleNavClick, checkRouteAccess } = appStore
+const { isActiveNavMenu, handleNavClick } = appStore
 const { menuIsCollapse, toggleCollapsed } = useSetting()
-
-const route = useRoute()
-onMounted(() => {
-  checkRouteAccess(route.path)
-})
-
-watch(() => route.path, () => {
-  checkRouteAccess(route.path)
-})
 </script>
 
 <template>

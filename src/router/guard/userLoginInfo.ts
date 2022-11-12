@@ -8,7 +8,7 @@ export default function setupUserLoginInfoGuard(router: Router) {
 
     const toLoginPage = () => {
       next({
-        name: 'login',
+        path: '/login',
         query: {
           redirect: to.name,
           ...to.query,
@@ -16,7 +16,7 @@ export default function setupUserLoginInfoGuard(router: Router) {
       })
     }
     if (!isLogin()) {//未登录则登录
-      if (to.name === 'login') {
+      if (to.path === '/login') {
         next()
         return
       }
