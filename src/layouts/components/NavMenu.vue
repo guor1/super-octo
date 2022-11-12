@@ -22,16 +22,20 @@ onMounted(() => {
         v-if="isExternalLink(navMenu.path)"
         :href="navMenu.path"
         target="_blank"
-        @click.stop="() => { }"
+        @click.stop="() => {}"
       />
-      <ep-icon v-if="navMenu.icon" :icon="navMenu.icon" />
       <template #title>
+        <i v-if="navMenu.icon" class="mr-8px flex">
+          <ep-icon :icon="navMenu.icon" />
+        </i>
         <span>{{ navMenu.title }}</span>
       </template>
     </el-menu-item>
     <el-sub-menu v-else :index="navMenu.path">
       <template #title>
-        <ep-icon v-if="navMenu.icon" :icon="navMenu.icon" />
+        <i v-if="navMenu.icon" class="mr-8px flex">
+          <ep-icon :icon="navMenu.icon" />
+        </i>
         <span>{{ navMenu.title }}</span>
       </template>
       <nav-menu :nav-menus="navMenu.children" />

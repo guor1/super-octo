@@ -5,8 +5,8 @@ import { useUserStore } from '~/store/modules/userStore'
 
 const generateFormModel = () => {
   return {
-    username: '',
-    password: '',
+    username: 'admin',
+    password: 'admin',
     rememberPassword: true,
   }
 }
