@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
-import type { LoginReq } from '~/types/model/user'
 import { doLogin } from '~/api/ums/user'
 import { useStorage } from '@vueuse/core'
+import type { LoginReq } from '~/types/model/user'
 
 export const useUserStore = defineStore('userStore', () => {
   const storageToken = useStorage('x-token', '')
