@@ -27,7 +27,7 @@ const handleSubmit = async (formEl: FormInstance | undefined) => {
       <el-card class="w-480px text-center m-auto" :body-style="{ paddingTop: '50px', paddingBottom: '50px', width: '480px' }">
         <img :src="logoImage" width="100" class="mb-16px">
         <el-space direction="vertical" size="large" class="w-full" :fill-ratio="80" fill>
-          <div class="login-title">
+          <div class="font-bold text-size-[16px] text-[#1890ff]">
             进销存管理系统
           </div>
           <el-form ref="loginForm" :model="formModel" layout="vertical">
@@ -39,7 +39,7 @@ const handleSubmit = async (formEl: FormInstance | undefined) => {
             </el-form-item>
             <el-space size="large" direction="vertical" fill class="w-full">
               <div class="flex justify-between">
-                <el-checkbox :model-value="formModel.rememberPassword">
+                <el-checkbox v-model="formModel.rememberPassword">
                   记住密码
                 </el-checkbox>
                 <el-link>忘记密码</el-link>
@@ -63,11 +63,5 @@ meta:
 <style scoped>
 .background {
   background-image: url('~/assets/image/background.svg');
-}
-
-.login-title {
-  font-weight: bold;
-  font-size: 16px;
-  color: #1890ff;
 }
 </style>
