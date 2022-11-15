@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import { doLogin } from '~/api/ums/user'
 import { useStorage } from '@vueuse/core'
+import { doLogin } from '~/api/ums/user'
 import type { LoginReq } from '~/types/model/user'
 
 export const useUserStore = defineStore('userStore', () => {
@@ -10,13 +10,14 @@ export const useUserStore = defineStore('userStore', () => {
     userInfo: null,
     token: storageToken,
     roleList: [],
+    userInit: false,
   })
 
   const handleLogin = async (params: LoginReq) => {
-    const { data } = await doLogin(params)
-
-    userState.token = data.tokenValue
-    storageToken.value = data.tokenValue
+    return doLogin(params).then(({ data }) => {
+      userState.token = data.tokenValue
+      storageToken.value = data.tokenValue
+    })
   }
 
   function isLogin() {
@@ -32,6 +33,6 @@ export const useUserStore = defineStore('userStore', () => {
   }
 
   return {
-    userState, handleLogin, isLogin, needFetchUserInfo, fetchUserInfo
+    userState, handleLogin, isLogin, needFetchUserInfo, fetchUserInfo,
   }
 })

@@ -15,7 +15,7 @@ export default function setupUserLoginInfoGuard(router: Router) {
         } as LocationQueryRaw,
       })
     }
-    if (!isLogin()) {//未登录则登录
+    if (!isLogin()) { // 未登录则登录
       if (to.path === '/login') {
         next()
         return
@@ -23,16 +23,15 @@ export default function setupUserLoginInfoGuard(router: Router) {
       toLoginPage()
       return
     }
-    if (!needFetchUserInfo()) {
+    if (!needFetchUserInfo())
       next()
-    }
+
     try {
       await fetchUserInfo()
       next()
     }
     catch (error) {
       toLoginPage()
-      return
     }
   })
 }

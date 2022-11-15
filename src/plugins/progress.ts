@@ -10,7 +10,6 @@ export const install: UserModule = ({ router }) => {
   })
   router.afterEach(async (to) => {
     NProgress.done()
-    
     const { checkRouteAccess } = useAppStore()
     checkRouteAccess(to.path)
   })
