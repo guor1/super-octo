@@ -7,18 +7,18 @@ export const useAppStore = defineStore('appStore', () => {
   // 子菜单
   const subMenuRef = ref<AppMenuRecordRaw[]>()
   // 激活的导航
-  const activeNavMenu = ref()
+  const activeNavMenuRef = ref()
   const activeSubMenuRef = ref()
-  const matchedMenuItems = ref<AppMenuRecordRaw[]>()
+  const activeMenuListRef = ref<AppMenuRecordRaw[]>()
 
   const isActiveNavMenu = (menuItem: AppMenuRecordRaw) => {
-    return unref(activeNavMenu) === menuItem.path
+    return unref(activeNavMenuRef) === menuItem.path
   }
 
   const router = useRouter()
   // 切换导航事件
   function handleNavClick(menuItem: AppMenuRecordRaw) {
-    activeNavMenu.value = menuItem.path
+    activeNavMenuRef.value = menuItem.path
 
     if (menuItem.children) {
       subMenuRef.value = menuItem.children
@@ -34,14 +34,14 @@ export const useAppStore = defineStore('appStore', () => {
       if (!item.children && item.path === path) {
         handleNavClick(item)
         activeSubMenuRef.value = null
-        matchedMenuItems.value = [item]
+        activeMenuListRef.value = [item]
         break
       }
       const accessItem = item.children?.find(subItem => subItem.path === path)
       if (accessItem) {
         handleNavClick(item)
         activeSubMenuRef.value = accessItem.path
-        matchedMenuItems.value = [item, accessItem]
+        activeMenuListRef.value = [item, accessItem]
         break
       }
     }
@@ -52,6 +52,6 @@ export const useAppStore = defineStore('appStore', () => {
   }
 
   return {
-    navMenuRef, subMenuRef, activeSubMenuRef, matchedMenuItems, isActiveNavMenu, handleNavClick, checkRouteAccess, setNavMenu,
+    navMenuRef, subMenuRef, activeSubMenuRef, activeMenuListRef, isActiveNavMenu, handleNavClick, checkRouteAccess, setNavMenu,
   }
 })
