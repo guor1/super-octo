@@ -4,7 +4,7 @@ import NavMenu from './components/NavMenu.vue'
 import { useAppStore } from '~/store/modules/appStore'
 
 const appStore = useAppStore()
-const { menuRef, subMenuRef, activeMenuRef } = storeToRefs(appStore)
+const { navMenuRef, subMenuRef, activeSubMenuRef } = storeToRefs(appStore)
 const { isActiveNavMenu, handleNavClick } = appStore
 const { menuIsCollapse, toggleCollapsed } = useSetting()
 </script>
@@ -18,7 +18,7 @@ const { menuIsCollapse, toggleCollapsed } = useSetting()
       <div class="adminui-side-split-scroll">
         <el-scrollbar>
           <ul class="pl-5px pr-5px">
-            <li v-for="item in menuRef" :key="item.path" :class="isActiveNavMenu(item) ? 'active' : ''" @click="handleNavClick(item)">
+            <li v-for="item in navMenuRef" :key="item.path" :class="isActiveNavMenu(item) ? 'active' : ''" @click="handleNavClick(item)">
               <ep-icon v-if="item.icon" :icon="item.icon" />
               <p>{{ item.title }}</p>
             </li>
@@ -32,7 +32,7 @@ const { menuIsCollapse, toggleCollapsed } = useSetting()
       </div>
       <div class="adminui-side-scroll">
         <el-scrollbar>
-          <el-menu router :collapse="menuIsCollapse" :default-active="activeMenuRef">
+          <el-menu router :collapse="menuIsCollapse" :default-active="activeSubMenuRef">
             <NavMenu :nav-menus="subMenuRef" />
           </el-menu>
         </el-scrollbar>

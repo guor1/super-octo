@@ -1,18 +1,14 @@
 import { defineStore } from 'pinia'
-import { getMenuList } from '~/api/ums/menu'
 import type { AppMenuRecordRaw } from '~/types'
 
 export const useAppStore = defineStore('appStore', () => {
   // 导航菜单
-  const menuRef = ref<AppMenuRecordRaw[]>([])
-  getMenuList().then(({ data }) => {
-    menuRef.value = data
-  })
+  const navMenuRef = ref<AppMenuRecordRaw[]>([])
   // 子菜单
   const subMenuRef = ref<AppMenuRecordRaw[]>()
   // 激活的导航
   const activeNavMenu = ref()
-  const activeMenuRef = ref()
+  const activeSubMenuRef = ref()
   const matchedMenuItems = ref<AppMenuRecordRaw[]>()
 
   const isActiveNavMenu = (menuItem: AppMenuRecordRaw) => {
@@ -34,24 +30,28 @@ export const useAppStore = defineStore('appStore', () => {
   }
 
   async function checkRouteAccess(path: string) {
-    for (const item of menuRef.value) {
+    for (const item of navMenuRef.value) {
       if (!item.children && item.path === path) {
         handleNavClick(item)
-        activeMenuRef.value = null
+        activeSubMenuRef.value = null
         matchedMenuItems.value = [item]
         break
       }
       const accessItem = item.children?.find(subItem => subItem.path === path)
       if (accessItem) {
         handleNavClick(item)
-        activeMenuRef.value = accessItem.path
+        activeSubMenuRef.value = accessItem.path
         matchedMenuItems.value = [item, accessItem]
         break
       }
     }
   }
 
+  function setNavMenu(data: AppMenuRecordRaw[]) {
+    navMenuRef.value = data
+  }
+
   return {
-    menuRef, subMenuRef, activeMenuRef, matchedMenuItems, isActiveNavMenu, handleNavClick, checkRouteAccess,
+    navMenuRef, subMenuRef, activeSubMenuRef, matchedMenuItems, isActiveNavMenu, handleNavClick, checkRouteAccess, setNavMenu,
   }
 })

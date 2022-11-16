@@ -1,17 +1,20 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 import { doLogin } from '~/api/ums/user'
+import { getMenuList } from '~/api/ums/menu'
 import type { LoginReq } from '~/types/model/user'
+import { useAppStore } from '~/store/modules/appStore'
 
 export const useUserStore = defineStore('userStore', () => {
   const storageToken = useStorage('x-token', '')
-
   const userState = reactive({
     userInfo: null,
     token: storageToken,
     roleList: [],
     userInit: false,
   })
+  const appStore = useAppStore()
+  const { setNavMenu } = appStore
 
   const handleLogin = async (params: LoginReq) => {
     return doLogin(params).then(({ data }) => {
@@ -24,15 +27,17 @@ export const useUserStore = defineStore('userStore', () => {
     return userState.token !== ''
   }
 
-  function needFetchUserInfo() {
-    return userState.userInfo === null
-  }
+  async function fetchUserInfo() {
+    if (userState.userInit)
+      return
 
-  function fetchUserInfo() {
-
+    await getMenuList().then(({ data }) => {
+      setNavMenu(data)
+    })
+    userState.userInit = true
   }
 
   return {
-    userState, handleLogin, isLogin, needFetchUserInfo, fetchUserInfo,
+    userState, handleLogin, isLogin, fetchUserInfo,
   }
 })

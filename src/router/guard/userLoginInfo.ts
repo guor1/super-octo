@@ -4,7 +4,7 @@ import { useUserStore } from '~/store/modules/userStore'
 export default function setupUserLoginInfoGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
     const userStore = useUserStore()
-    const { isLogin, needFetchUserInfo, fetchUserInfo } = userStore
+    const { isLogin, fetchUserInfo } = userStore
 
     const toLoginPage = () => {
       next({
@@ -23,9 +23,6 @@ export default function setupUserLoginInfoGuard(router: Router) {
       toLoginPage()
       return
     }
-    if (!needFetchUserInfo())
-      next()
-
     try {
       await fetchUserInfo()
       next()
