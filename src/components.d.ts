@@ -19,11 +19,17 @@ declare module '@vue/runtime-core' {
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
     ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElIconBottomLeft: typeof import('@element-plus/icons-vue')['BottomLeft']
+    ElIconClose: typeof import('@element-plus/icons-vue')['Close']
+    ElIconFullScreen: typeof import('@element-plus/icons-vue')['FullScreen']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElLink: typeof import('element-plus/es')['ElLink']
+    ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElPagination: typeof import('element-plus/es')['ElPagination']
@@ -60,5 +66,8 @@ declare module '@vue/runtime-core' {
     Select: typeof import('./components/scWorkflow/select.vue')['default']
     Send: typeof import('./components/scWorkflow/nodes/send.vue')['default']
     Tableselect: typeof import('./components/scForm/items/tableselect.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }
