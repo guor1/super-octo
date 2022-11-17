@@ -18,7 +18,10 @@ const { menuIsCollapse, toggleCollapsed } = useSetting()
       <div class="adminui-side-split-scroll">
         <el-scrollbar>
           <ul class="pl-5px pr-5px">
-            <li v-for="item in navMenuRef" :key="item.path" :class="isActiveNavMenu(item) ? 'active' : ''" @click="handleNavClick(item)">
+            <li
+              v-for="item in navMenuRef" :key="item.path" :class="isActiveNavMenu(item) ? 'active' : ''"
+              @click="handleNavClick(item)"
+            >
               <ep-icon v-if="item.icon" :icon="item.icon" />
               <p>{{ item.title }}</p>
             </li>

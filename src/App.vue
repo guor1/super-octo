@@ -5,7 +5,7 @@ const locale = reactive(zhCn)
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
 useHead({
-  title: 'Vitesse',
+  title: '进销存系统',
   meta: [
     { name: 'description', content: 'Opinionated Vite Starter Template' },
   ],
@@ -21,5 +21,4 @@ useHead({
 <style lang="scss">
 @import '~/styles/style.scss';
 @import '~/styles/theme/dark.scss';
-// @import '~/styles/element/index.scss';
 </style>
