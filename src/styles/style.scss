@@ -26,3 +26,7 @@
     background-color: var(--color-bg-1);
     border-radius: 4px;
 }
+
+.el-table th.el-table__cell {
+    background-color: var(--el-fill-color-light)!important;
+}
